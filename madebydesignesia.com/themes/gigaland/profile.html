@@ -16,6 +16,9 @@
     <link id="bootstrap" href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/plugins.css" rel="stylesheet" type="text/css" />    
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- color scheme -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
@@ -108,13 +111,13 @@
                                     <div class="de-login-menu">
                                         <a href="create-options.html" class="btn-main"><i class="fa fa-plus"></i><span>Create</span></a>
 
-                                        <span id="de-click-menu-notification" class="de-menu-notification">
+                                        <!-- <span id="de-click-menu-notification" class="de-menu-notification">
                                             <span class="d-count">8</span>
                                             <i class="fa fa-bell"></i>
-                                        </span>
+                                        </span> -->
 
                                         <span id="de-click-menu-profile" class="de-menu-profile">                           
-                                            <img src="images/author_single/author_thumbnail.jpg" class="img-fluid" alt="">
+                                            <i class="fas fa-user"></i>
                                         </span>
 
                                         <div id="de-submenu-notification" class="de-submenu">
@@ -172,7 +175,7 @@
                                             </ul>
                                         </div>
 
-                                        <div id="de-submenu-profile" class="de-submenu">
+                                                                               <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
                                                 <h4>Monica Lucas</h4>
                                                 <a href="profile.html">Set display name</a>
@@ -180,7 +183,7 @@
                                             <div class="spacer-10"></div>
                                             <div class="d-balance">
                                                 <h4>Balance</h4>
-                                                12.858 ETH
+                                               <span id="balance"></span>
                                             </div>
                                             <div class="spacer-10"></div>
                                             <div class="d-wallet">
@@ -188,6 +191,8 @@
                                                 <span id="wallet" class="d-wallet-address">DdzFFzCqrhshMSxb9oW3mRo4MJrQkusV3fGFSTwaiu4wPBqMryA9DYVJCkW9n7twCffG5f5wX2sSkoDXGiZB1HPa7K7f865Kk4LqnrME</span>
                                                 <button id="btn_copy" title="Copy Text">Copy</button>
                                             </div>
+
+                                            
 
                                             <div class="d-line"></div>
 
@@ -237,8 +242,8 @@
                             
                                 <ul class="de_nav">
                                     <li class="active"><span><i class="fa fa-user"></i>Profile</span></li>
-                                    <li><span><i class="fa fa-exclamation-circle"></i>Notifications</span></li>
-                                    <li><span><i class="fa fa-paint-brush"></i>Appearance</span></li>
+                                    <!-- <li><span><i class="fa fa-exclamation-circle"></i>Notifications</span></li>
+                                    <li><span><i class="fa fa-paint-brush"></i>Appearance</span></li> -->
                                 </ul>
                                 
                                 <div class="de_tab_content">                            
@@ -266,23 +271,23 @@
 
                                                         <div class="spacer-20"></div>
 
-                                                        <h5><i class="fa fa-link"></i> Your site</h5>
-                                                        <input type="text" name="your_site" id="your_site" class="form-control" placeholder="Enter Website URL" />
+                                                        <!-- <h5><i class="fa fa-link"></i> Your site</h5>
+                                                        <input type="text" name="your_site" id="your_site" class="form-control" placeholder="Enter Website URL" /> -->
 
                                                         <div class="spacer-20"></div>
 
                                                         <h5><i class="fa fa-twitter"></i> Twitter username</h5>
-                                                        <input type="text" name="twitter_usernam" id="twitter_usernam" class="form-control" placeholder="Enter Twitter username" />
+                                                        <input type="text" name="" id="twitter" class="form-control" placeholder="Enter Twitter username" />
 
                                                         <div class="spacer-20"></div>
 
                                                         <h5><i class="fa fa-instagram"></i> Instagram username</h5>
-                                                        <input type="text" name="instagram_username" id="instagram_username" class="form-control" placeholder="Enter Instagram username" />
+                                                        <input type="text" name="" id="insta" class="form-control" placeholder="Enter Instagram username" />
 
                                                     </div>
                                             </div>
 
-                                            <div id="sidebar" class="col-lg-4">
+                                            <!-- <div id="sidebar" class="col-lg-4">
                                                 <h5>Profile image <i class="fa fa-info-circle id-color-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Recommend 400 x 400. Max size: 50MB. Click the image to upload."></i></h5>
 
                                                 <img src="images/author_single/author_thumbnail.jpg" id="click_profile_img" class="d-profile-img-edit img-fluid" alt="">
@@ -294,7 +299,7 @@
                                                 <img src="images/author_single/author_banner.jpg" id="click_banner_img" class="d-banner-img-edit img-fluid" alt="">
                                                 <input type="file" id="upload_banner_img"> 
 
-                                            </div>                                         
+                                            </div>                                          -->
                                         </div>
                                     </div>
 
@@ -414,7 +419,7 @@
                             </div>
 
                             <div class="spacer-30"></div>
-                            <input type="button" id="submit" class="btn-main" value="Update profile">
+                            <input type="button" id="personalDataBtn" class="btn-main" value="Update profile">
                             </form>
                         </div>
                     </div>
@@ -542,7 +547,7 @@
     
       const response = await $.ajax({
         type: "GET",
-        url: `https://appex-render.onrender.com/users/${userFromLS.email}`,
+        url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
         dataType: "json",
         timeout: 30000,
         success: async function (data) {
@@ -563,7 +568,8 @@
       $('#username').val(userInfo.username)
     //   $('#name').val(userInfo.lastName)
      
-      $('#socialUsernames').val(userInfo.socialUsernames)
+      $('#twitter').val(userInfo.socialUsernames[0])
+      $('#insta').val(userInfo.socialUsernames[1])
      
     //   $('#title').html(userInfo.firstName + " " + userInfo.lastName)
     
@@ -571,15 +577,15 @@
      
     });
     
-    async function updateProfile({ firstName, lastName, email }) {
-      console.log(firstName, lastName, email);
+    async function updateProfile({ username, email,socialUsernames }) {
+      console.log(username, email,socialUsernames);
       console.log(currentUser);
     
       const response = await $.ajax({
         type: "PUT",
-        url: `https://appex-render.onrender.com/users/${currentUser._id}/profile/update`,
+        url: `https://slime-cloak.vercel.app/users/${currentUser._id}/profile/update`,
         dataType: "json",
-        data: { firstName, lastName, email },
+        data: { username, email,socialUsernames },
         timeout: 30000,
         success: function (data) {
                   localStorage.removeItem("ct")
@@ -601,11 +607,14 @@
     
     $('#personalDataBtn').click(async function (e) {
       e.preventDefault();
-      var firstName = $('#firstname').val()
-      var lastName = $('#lastname').val()
+      var username = $('#username').val()
       var email = $('#email').val()
+      var twitter=$('#twitter').val()
+      var insta = $('#insta').val()
+      var socialUsernames=[twitter,insta]
+     
     
-      await updateProfile({ firstName, lastName, email })
+      await updateProfile({ username, email, socialUsernames })
     })
     
     

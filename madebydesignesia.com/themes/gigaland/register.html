@@ -352,7 +352,7 @@
     var btn=document.getElementById('registerBtn');
    function red () {
            btn.style.opacity="1"
-           btn.innerHTML="register.html"
+           btn.innerHTML="register"
    
                           }
                           function topFunction() {
@@ -378,7 +378,7 @@ document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                        console.log(data);
                        $('.live-section').html("Account was successfully created").addClass('alert-success')
                        setTimeout(function () {
-                           $(location).prop('href', './otp.html')
+                           $(location).prop('href', './verification.html')
                        }, 1000)
    
                    },

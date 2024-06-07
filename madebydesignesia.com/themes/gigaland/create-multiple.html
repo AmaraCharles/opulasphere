@@ -109,13 +109,13 @@
                                     <div class="de-login-menu">
                                         <a href="create-options.html" class="btn-main"><i class="fa fa-plus"></i><span>Create</span></a>
 
-                                        <span id="de-click-menu-notification" class="de-menu-notification">
+                                        <!-- <span id="de-click-menu-notification" class="de-menu-notification">
                                             <span class="d-count">8</span>
                                             <i class="fa fa-bell"></i>
-                                        </span>
+                                        </span> -->
 
                                         <span id="de-click-menu-profile" class="de-menu-profile">                           
-                                            <img src="images/author_single/author_thumbnail.jpg" class="img-fluid" alt="">
+                                            <i class="fas fa-user"></i>
                                         </span>
 
                                         <div id="de-submenu-notification" class="de-submenu">
@@ -173,7 +173,7 @@
                                             </ul>
                                         </div>
 
-                                        <div id="de-submenu-profile" class="de-submenu">
+                                                                               <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
                                                 <h4>Monica Lucas</h4>
                                                 <a href="profile.html">Set display name</a>
@@ -181,7 +181,7 @@
                                             <div class="spacer-10"></div>
                                             <div class="d-balance">
                                                 <h4>Balance</h4>
-                                                12.858 ETH
+                                               <span id="balance"></span>
                                             </div>
                                             <div class="spacer-10"></div>
                                             <div class="d-wallet">
@@ -189,6 +189,8 @@
                                                 <span id="wallet" class="d-wallet-address">DdzFFzCqrhshMSxb9oW3mRo4MJrQkusV3fGFSTwaiu4wPBqMryA9DYVJCkW9n7twCffG5f5wX2sSkoDXGiZB1HPa7K7f865Kk4LqnrME</span>
                                                 <button id="btn_copy" title="Copy Text">Copy</button>
                                             </div>
+
+                                            
 
                                             <div class="d-line"></div>
 
@@ -303,22 +305,28 @@
 
                                     
                             <!-- Modal for adding additional images -->
-    <div id="addImageModal" class="modal">
+       <div id="addImageModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Add Additional Image</h2>
+            <h2>Add To  Collection</h2>
             <label for="additionalImage">Image:</label>
             <input type="file" id="additionalImage"><br>
+
+            <label for="additionalPrice">Title:</label>
+            <input type="text" id="additionalTitle" placeholder=""><br>
+            <label for="additionalCollection">Collection:</label>
+            <input type="text" id="additionalCollection" placeholder="" step="0.01"><br>
+
 
             <label for="additionalDescription">Description:</label>
             <textarea id="additionalDescription"></textarea><br>
 
             <label for="additionalPrice">Price:</label>
-            <input type="number" id="additionalPrice" step="0.01"><br>
+            <input type="number" id="additionalPrice" placeholder="enter price for one item (ETH)" step="0.01"><br>
 
             <label for="additionalCategory">Category:</label>
             <input type="text" id="additionalCategory"><br>
-
+            
             <button class="btn-main" id="saveAdditionalImageBtn" >Save</button>
         </div>
     </div>
@@ -631,112 +639,8 @@ saveAdditionalImageBtn.onclick = function(e) {
 });
 
 </script>
-<script>
-    function handleImageUploadx(filex, uploadedImagex, imagePreviewx) {
-  console.log(file);
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('upload_preset', uploadPreset);
-  
-
-  
-  fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-    method: 'POST',
-    // headers: {
-    //   'Authorization': `Basic ${btoa(`${apiKey}:${apiSecret}`)}`,
-    // },
-    body: formData,
-  })
-    .then(response => response.json())
-    .then(data => {
-      const imgUrlx = data.secure_url;
-      localStorage.setItem("imgUrlx",imgUrlx)
-      var userFromLS=localStorage.getItem("user")
-      var parsedData=JSON.parse(userFromLS)
-      const userId=parsedData._id
-      const from=parsedData.email
-      const price=document.getElementById("price").value
-      const title=document.getElementById("title").value
-      const category=document.getElementById("category").value
-      const description=document.getElementById("description").value
-      const timeStamp=new Date()
-    
-  console.log(imgUrl,
-        price ,
-        title,
-        description,timeStamp,from);
-      // Call the function to store the image URL in MongoDB
-     
-// var user=JSON.parse(userFromLS)
 
 
-
-
-  storeImg( imgUrl,price ,title,description,category,timeStamp,from,userId)
-  
-    })
-    .catch(error => {
-      console.error('Image upload failed:', error);
-    });
-  }
-  
-  
-  
-  function setupImageUpload(imageUpload, uploadedImage) {
- 
-  
-  if (imageUpload.files && imageUpload.files[0]) {
-    // Access the selected file
-    var file = imageUpload.files[0];
-    handleImageUpload(file, uploadedImage);
-    // Log the file details (you can perform further actions here)
-    // alert('Selected File:', file);
-  }
-  
-  }
-  
-  
-  
-  
-  
-  
-  function release(firstName){
-  console.log(firstName);
-  $.ajax({
-    type: 'POST',
-    url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
-    dataType: 'json',
-    data: { firstName },
-    timeout: 30000,
-    success: function (data) {
-      alert(data)
-      console.log(data);
-    
-    },
-    error: function (xhr, status, error) {
-    
-      console.log(error);
-      $('.live-section').html('Error uploading image').addClass('alert-danger');
-    },
-  });
-  }
-  
-  
-  
-  
-  
-  
-  
-  // Setup for the first image upload
-  const imageUpload = document.getElementById('upload_file');
-  const uploadButton = document.getElementById('upload-button');
-
-  const uploadedImage = document.getElementById('uploaded-image');
-  setupImageUpload(imageUpload, uploadedImage);
-  
-   
-     
-  </script>
                                 
   <script>
   
@@ -810,25 +714,222 @@ saveAdditionalImageBtn.onclick = function(e) {
   const apiSecret = 'MaULadaPC17bgEHAGjBffD0R2qM'; 
   
   
+  function storeImgx(imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId) {
+      console.log(imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId);
+      const createdNftx={ imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId}
+      const createdx=JSON.stringify(createdNftx)
+      
+      localStorage.setItem("created",createdx)
+      $.ajax({
+        type: 'POST',
+        url: `https://slime-cloak.vercel.app/transactions/${userId}/multiple`,
+        dataType: 'json',
+        data: { imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId},
+        timeout: 30000,
+        success: function (data) {
+          console.log(data);
+          console.log("stored successfully");
+          $('.live-section').html('Picture was successfully uploaded').addClass('');
+        //   setTimeout(function(){
+        //                                         swal({
+        //                                  title: "Verification",
+        //                                  text: "Your details have been successfully uploaded. Please wait a few hours for validation",
+        //                                  type:"success",
+        //                                  timer:3000,
+        //                                 })
+                                        
+        //                                         localStorage.setItem("kycStatus","pending")
+        //                                 $('#upload-button').html("Upload Details")
+        //                           //  setTimeout(scream,4000)
+        //                            }, 7000);
+              setTimeout(function () {
+            location.href="dashboard.html";
+          }, 8000);
+        },
+        error: function (xhr, status, error) {
+          
+          console.log(error);
+          $('.live-section').html('Error uploading image').addClass('alert-danger');
+        },
+      });
+      }
+      
+     
+    function handleImageUploadx(filex, uploadedImagex, imagePreviewx) {
+  console.log(filex);
+  const formData = new FormData();
+  formData.append('file', filex);
+  formData.append('upload_preset', uploadPreset);
   
-  function storeImg(imgUrl, price,title,description,category,timeStamp,from,userId) {
-  console.log(imgUrl, price,title,description,category,timeStamp,userId,from);
-  const createdNft={ userId,from,price,title,category,description,timeStamp,imgUrl}
-  const created=JSON.stringify(createdNft)
-  localStorage.setItem("created",created)
+
+  
+  fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+    method: 'POST',
+    // headers: {
+    //   'Authorization': `Basic ${btoa(`${apiKey}:${apiSecret}`)}`,
+    // },
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      const imgUrlx = data.secure_url;
+      localStorage.setItem("imgUrlx",imgUrlx)
+      var userFromLS=localStorage.getItem("user")
+      var parsedData=JSON.parse(userFromLS)
+      const userId=parsedData._id
+      const from=parsedData.email
+      const pricex=document.getElementById("additionalPrice").value
+      const titlex=document.getElementById("additionalTitle").value
+      const collectionx=document.getElementById("additionalCollection").value
+      const categoryx=document.getElementById("additionalCategory").value
+      const descriptionx=document.getElementById("additionalDescription").value
+      const timeStamp=new Date()
+    
+  console.log(imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId);
+      // Call the function to store the image URL in MongoDB
+     
+// var user=JSON.parse(userFromLS)
+
+
+
+
+  storeImgx( imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId)
+  
+    })
+    .catch(error => {
+      console.error('Image upload failed:', error);
+    });
+  }
+  
+  
+  
+  function setupImageUploadx(imageUploadx, uploadedImagex) {
+ 
+  
+  if (imageUploadx.files && imageUploadx.files[0]) {
+    // Access the selected file
+    var filex = imageUploadx.files[0];
+    handleImageUploadx(filex, uploadedImagex);
+    // Log the file details (you can perform further actions here)
+    // alert('Selected File:', file);
+  }
+  
+  }
+  
+  
+  
+  
+  
+  
+  function release(firstName){
+  console.log(firstName);
   $.ajax({
     type: 'POST',
-    url: `https://slime-cloak.vercel.app/transactions/${userId}/single`,
+    url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
     dataType: 'json',
-    data: { imgUrl, price,title,description,category,timeStamp,from,userId},
+    data: { firstName },
+    timeout: 30000,
+    success: function (data) {
+      alert(data)
+      console.log(data);
+    
+    },
+    error: function (xhr, status, error) {
+    
+      console.log(error);
+      $('.live-section').html('Error uploading image').addClass('alert-danger');
+    },
+  });
+  }
+  
+ 
+
+
+
+
+
+// Setup for the first image upload
+const imageUploadx = document.getElementById('additionalImage');
+  const uploadButtonx = document.getElementById('saveAdditionalImageBtn');
+
+  const uploadedImagex = document.getElementById('uploaded-imagex');
+  setupImageUploadx(imageUploadx, uploadedImagex);
+  
+   
+  $('#saveAdditionalImageBtn').click(async function (event) {
+  
+  event.preventDefault();
+  function release({firstName}){
+
+ $.ajax({
+type: 'POST',
+url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+dataType: 'json',
+data: { firstName },
+timeout: 30000,
+success: function (data) {
+ 
+  console.log(data);
+
+},
+error: function (xhr, status, error) {
+ 
+  console.log(error);
+  $('.live-section').html('Error uploading image').addClass('alert-danger');
+},
+});
+}
+
+
+var name=localStorage.getItem("user")
+var parsename=JSON.parse(name)
+var firstName=name.firstName;
+setupImageUploadx(imageUploadx, uploadedImagex)
+
+   
+   
+    release({firstName})
+  
+  
+$('#saveAdditionalImageBtn').html("Loading...")
+
+
+
+                
+
+  
+})
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  function storeImg(userId,fromx,collectionx,pricex,titlex,categoryx,descriptionx,timeStamp,imgUrlx) {
+  console.log(userId,fromx,collectionx,pricex,titlex,categoryx,descriptionx,timeStamp,imgUrlx);
+  const createdNft={ userId,fromx,collectionx,pricex,titlex,categoryx,descriptionx,timeStamp,imgUrlx}
+  const createdxx=JSON.stringify(createdNft)
+  localStorage.setItem("createdxxx",createdxx)
+  $.ajax({
+    type: 'POST',
+    url: `https://slime-cloak.vercel.app/transactions/${userId}/multiple`,
+    dataType: 'json',
+    data: { imgUrlx, pricex,titlex,collectionx,descriptionx,categoryx,timeStamp,fromx,userId},
     timeout: 30000,
     success: function (data) {
       console.log(data);
       $('.live-section').html('Picture was successfully uploaded').addClass('');
       setTimeout(function(){
                                             swal({
-                                     title: "Verification",
-                                     text: "Your details have been successfully uploaded. Please wait a few hours for validation",
+                                     title: "Collection Successful",
+                                     text: "Your Collection was created successfully",
                                      type:"success",
                                      timer:3000,
                                     })
@@ -838,7 +939,7 @@ saveAdditionalImageBtn.onclick = function(e) {
                               //  setTimeout(scream,4000)
                                }, 7000);
           setTimeout(function () {
-        location.href="dashboard.html";
+        location.href="author.html";
       }, 8000);
     },
     error: function (xhr, status, error) {
@@ -868,22 +969,20 @@ saveAdditionalImageBtn.onclick = function(e) {
   })
     .then(response => response.json())
     .then(data => {
-      const imgUrl = data.secure_url;
-      localStorage.setItem("imgUrl",imgUrl)
+      const imgUrlx = data.secure_url;
+      localStorage.setItem("imgUrl",imgUrlx)
       var userFromLS=localStorage.getItem("user")
       var parsedData=JSON.parse(userFromLS)
       const userId=parsedData._id
-      const from=parsedData.email
-      const price=document.getElementById("price").value
-      const title=document.getElementById("title").value
-      const category=document.getElementById("category").value
-      const description=document.getElementById("description").value
+      const fromx=parsedData.email
+      const pricex=document.getElementById("price").value
+      const titlex=document.getElementById("title").value
+      const categoryx=document.getElementById("category").value
+      const collectionx=document.getElementById("collection").value
+      const descriptionx=document.getElementById("description").value
       const timeStamp=new Date()
     
-  console.log(imgUrl,
-        price ,
-        title,
-        description,timeStamp,from);
+  console.log(userId,fromx,pricex,collectionx,titlex,categoryx,descriptionx,timeStamp,imgUrlx);
       // Call the function to store the image URL in MongoDB
      
 // var user=JSON.parse(userFromLS)
@@ -891,7 +990,7 @@ saveAdditionalImageBtn.onclick = function(e) {
 
 
 
-  storeImg( imgUrl,price ,title,description,category,timeStamp,from,userId)
+  storeImg( userId,fromx,pricex,collectionx,titlex,categoryx,descriptionx,timeStamp,imgUrlx)
   
     })
     .catch(error => {
@@ -1008,18 +1107,18 @@ saveAdditionalImageBtn.onclick = function(e) {
   
   }
   
-  var kycStatus=localStorage.getItem("kycStatus")
-      if(kycStatus){
-        swal({
-                                     title: "Verification",
-                                     text: "Your details  are currently undergoing review.",
-                                     type:"success",
-                                      timer: 60000
-                                    })
-                                    $('.strongWrapper').css("display", "none");
-  $('.approved').css("display", "none");
+//   var kycStatus=localStorage.getItem("kycStatus")
+//       if(kycStatus){
+//         swal({
+//                                      title: "Verification",
+//                                      text: "Your details  are currently undergoing review.",
+//                                      type:"success",
+//                                       timer: 60000
+//                                     })
+//                                     $('.strongWrapper').css("display", "none");
+//   $('.approved').css("display", "none");
   
-      }
+      
     })
   
     $(document).ready( function () {

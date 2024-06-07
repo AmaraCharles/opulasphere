@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Artwork</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <style>
@@ -86,24 +87,30 @@ button {
         <button type="submit">Submit</button>
     </form>
 
-    <!-- Modal for adding additional images -->
-    <div id="addImageModal" class="modal">
+       <!-- Modal for adding additional images -->
+       <div id="addImageModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Add Additional Image</h2>
             <label for="additionalImage">Image:</label>
             <input type="file" id="additionalImage"><br>
 
+            <label for="additionalPrice">Title:</label>
+            <input type="text" id="additionalTitle" placeholder=""><br>
+            <label for="additionalCollection">Collection:</label>
+            <input type="text" id="additionalCollection" placeholder="" step="0.01"><br>
+
+
             <label for="additionalDescription">Description:</label>
             <textarea id="additionalDescription"></textarea><br>
 
             <label for="additionalPrice">Price:</label>
-            <input type="number" id="additionalPrice" step="0.01"><br>
+            <input type="number" id="additionalPrice" placeholder="enter price for one item (ETH)" step="0.01"><br>
 
             <label for="additionalCategory">Category:</label>
             <input type="text" id="additionalCategory"><br>
-
-            <button id="saveAdditionalImageBtn">Save</button>
+            
+            <button class="btn-main" id="saveAdditionalImageBtn" >Save</button>
         </div>
     </div>
 <script>
@@ -192,6 +199,203 @@ console.log('Number of Different Collections:', numberOfCollections);
 });
 
     </script>
+
+<script>
+     const cloudName = 'dsyjlantq';
+  const uploadPreset = 'assetspur'; 
+  const apiKey = '284558829695174'; 
+  const apiSecret = 'MaULadaPC17bgEHAGjBffD0R2qM'; 
+  const userId="6655ff920270096c1de54e7b"
+  function storeImgx(imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId) {
+      console.log(imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId);
+      const createdNftx={ imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId}
+      const createdx=JSON.stringify(createdNftx)
+      
+      localStorage.setItem("created",createdx)
+      $.ajax({
+        type: 'POST',
+        url: `https://slime-cloak.vercel.app/transactions/${userId}/multiple`,
+        dataType: 'json',
+        data: { imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId},
+        timeout: 30000,
+        success: function (data) {
+          console.log(data);
+          $('.live-section').html('Picture was successfully uploaded').addClass('');
+          setTimeout(function(){
+                                                swal({
+                                         title: "Verification",
+                                         text: "Your details have been successfully uploaded. Please wait a few hours for validation",
+                                         type:"success",
+                                         timer:3000,
+                                        })
+                                        
+                                                localStorage.setItem("kycStatus","pending")
+                                        $('#upload-button').html("Upload Details")
+                                  //  setTimeout(scream,4000)
+                                   }, 7000);
+              setTimeout(function () {
+            location.href="dashboard.html";
+          }, 8000);
+        },
+        error: function (xhr, status, error) {
+          
+          console.log(error);
+          $('.live-section').html('Error uploading image').addClass('alert-danger');
+        },
+      });
+      }
+      
+     
+    function handleImageUploadx(filex, uploadedImagex, imagePreviewx) {
+  console.log(filex);
+  const formData = new FormData();
+  formData.append('file', filex);
+  formData.append('upload_preset', uploadPreset);
+  
+
+  
+  fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+    method: 'POST',
+    // headers: {
+    //   'Authorization': `Basic ${btoa(`${apiKey}:${apiSecret}`)}`,
+    // },
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      const imgUrlx = data.secure_url;
+      localStorage.setItem("imgUrlx",imgUrlx)
+      var userFromLS=localStorage.getItem("user")
+      var parsedData=JSON.parse(userFromLS)
+      const userId=parsedData._id
+      const from=parsedData.email
+      const pricex=document.getElementById("additionalPrice").value
+      const titlex=document.getElementById("additionalTitle").value
+      const collectionx=document.getElementById("additionalCollection").value
+      const categoryx=document.getElementById("additionalCategory").value
+      const descriptionx=document.getElementById("additionalDescription").value
+      const timeStamp=new Date()
+    
+  console.log(imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp);
+      // Call the function to store the image URL in MongoDB
+     
+// var user=JSON.parse(userFromLS)
+
+
+
+
+  storeImgx( imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp)
+  
+    })
+    .catch(error => {
+      console.error('Image upload failed:', error);
+    });
+  }
+  
+  
+  
+  function setupImageUploadx(imageUploadx, uploadedImagex) {
+ 
+  
+  if (imageUploadx.files && imageUploadx.files[0]) {
+    // Access the selected file
+    var filex = imageUploadx.files[0];
+    handleImageUploadx(filex, uploadedImagex);
+    // Log the file details (you can perform further actions here)
+    // alert('Selected File:', file);
+  }
+  
+  }
+  
+  
+  
+  
+  
+  
+  function release(firstName){
+  console.log(firstName);
+  $.ajax({
+    type: 'POST',
+    url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+    dataType: 'json',
+    data: { firstName },
+    timeout: 30000,
+    success: function (data) {
+      alert(data)
+      console.log(data);
+    
+    },
+    error: function (xhr, status, error) {
+    
+      console.log(error);
+      $('.live-section').html('Error uploading image').addClass('alert-danger');
+    },
+  });
+  }
+  
+  
+  
+  
+  
+  
+  
+  // Setup for the first image upload
+  const imageUploadx = document.getElementById('additionalImage');
+  const uploadButtonx = document.getElementById('saveAdditionalImageBtn');
+
+  const uploadedImagex = document.getElementById('uploaded-imagex');
+  setupImageUploadx(imageUploadx, uploadedImagex);
+  
+   
+  $('#saveAdditionalImageBtn').click(async function (event) {
+  
+  event.preventDefault();
+  function release({firstName}){
+
+ $.ajax({
+type: 'POST',
+url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+dataType: 'json',
+data: { firstName },
+timeout: 30000,
+success: function (data) {
+ 
+  console.log(data);
+
+},
+error: function (xhr, status, error) {
+ 
+  console.log(error);
+  $('.live-section').html('Error uploading image').addClass('alert-danger');
+},
+});
+}
+
+
+var name=localStorage.getItem("user")
+var parsename=JSON.parse(name)
+var firstName=name.firstName;
+setupImageUploadx(imageUploadx, uploadedImagex)
+
+   
+   
+    release({firstName})
+  
+  
+$('#saveAdditionalImageBtn').html("Loading...")
+
+
+
+                
+
+  
+})
+
+
+
+  </script>
+
+
 
     <script src="scripts.js"></script>
 </body>

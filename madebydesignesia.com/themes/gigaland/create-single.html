@@ -16,6 +16,7 @@
     <link id="bootstrap" href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/plugins.css" rel="stylesheet" type="text/css" />    
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- color scheme -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
@@ -110,13 +111,13 @@
                                     <div class="de-login-menu">
                                         <a href="create-options.html" class="btn-main"><i class="fa fa-plus"></i><span>Create</span></a>
 
-                                        <span id="de-click-menu-notification" class="de-menu-notification">
+                                         <!-- <span id="de-click-menu-notification" class="de-menu-notification">
                                             <span class="d-count">8</span>
                                             <i class="fa fa-bell"></i>
-                                        </span>
+                                        </span> -->
 
                                         <span id="de-click-menu-profile" class="de-menu-profile">                           
-                                            <img src="images/author_single/author_thumbnail.jpg" class="img-fluid" alt="">
+                                            <i class="fas fa-user"></i>
                                         </span>
 
                                         <div id="de-submenu-notification" class="de-submenu">
@@ -164,7 +165,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="#">
-                                                        <img class="lazy" src="images/author/author-6.jpg" alt="">
+                                                      <i class="fas fa-user"></i>
                                                         <div class="d-desc">
                                                             <span class="d-name"><b>Karla Sharp</b> started following you</span>
                                                             <span class="d-time">3 days ago</span>
@@ -182,7 +183,7 @@
                                             <div class="spacer-10"></div>
                                             <div class="d-balance">
                                                 <h4>Balance</h4>
-                                                12.858 ETH
+                                               <span id="balance"></span>
                                             </div>
                                             <div class="spacer-10"></div>
                                             <div class="d-wallet">
@@ -196,7 +197,7 @@
                                             <ul class="de-submenu-profile">
                                                 <li><a href="author.html"><i class="fa fa-user"></i> My profile</a>
                                                 <li><a href="profile.html"><i class="fa fa-pencil"></i> Edit profile</a>
-                                                <li><a href="#"><i class="fa fa-sign-out"></i> Sign out</a>
+                                                <li><a href="login.html"><i class="fa fa-sign-out"></i> Sign out</a>
                                             </ul>
                                         </div>
                                         <span id="menu-btn"></span>
@@ -537,12 +538,12 @@
           console.log(data);
           $('.live-section').html('Picture was successfully uploaded').addClass('');
           setTimeout(function(){
-                                                swal({
-                                         title: "Verification",
-                                         text: "Your details have been successfully uploaded. Please wait a few hours for validation",
-                                         type:"success",
-                                         timer:3000,
-                                        })
+                                        //         swal({
+                                        //  title: "Verification",
+                                        //  text: "Your details have been successfully uploaded. Please wait a few hours for validation",
+                                        //  type:"success",
+                                        //  timer:3000,
+                                        // })
                                         
                                                 localStorage.setItem("kycStatus","pending")
                                         $('#upload-button').html("Upload Details")
@@ -721,12 +722,12 @@
       
       var kycStatus=localStorage.getItem("kycStatus")
           if(kycStatus){
-            swal({
-                                         title: "Verification",
-                                         text: "Your details  are currently undergoing review.",
-                                         type:"success",
-                                          timer: 60000
-                                        })
+            // swal({
+            //                              title: "Verification",
+            //                              text: "Your details  are currently undergoing review.",
+            //                              type:"success",
+            //                               timer: 60000
+            //                             })
                                         $('.strongWrapper').css("display", "none");
       $('.approved').css("display", "none");
       

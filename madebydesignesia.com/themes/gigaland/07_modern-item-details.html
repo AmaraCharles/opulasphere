@@ -449,13 +449,34 @@
                         <div><b>0.013325 ETH</b></div>
                     </div>
                     <div class="spacer-single"></div>
-                    <a href="wallet.html" target="_blank" class="btn-main btn-fullwidth">Add funds</a>
+                    <a href="#" data-bs-target="#add_now" class="btn-main btn-fullwidth">Add funds</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+        <div class="modal fade" id="add_now" tabindex="-1" aria-labelledby="buy_now" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered de-modal">
+              <div class="modal-content">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                  <div class="p-3 form-border">
+                      <h3>Checkout</h3>
+                      Copy the <b>address</b> below <b>and transfer to your balance</b>
+                      <div class="spacer-single"></div>
+                      <h6>Wallet address. <span class="id-color-2"></span></h6>
+                      <input type="text" name="buy_now_qty" id="buy_now_qty" class="form-control" value="1" />
+                      <div class="spacer-single"></div>
+                     
+                      <div class="spacer-single"></div>
+                      <a href="#" data-bs-target="#add_now" class="btn-main btn-fullwidth">Add funds</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
         <!-- place a bid -->
         <div class="modal fade" id="place_a_bid" tabindex="-1" aria-labelledby="place_a_bid" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered de-modal">
