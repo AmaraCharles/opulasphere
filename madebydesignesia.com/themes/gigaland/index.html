@@ -154,10 +154,11 @@
                             <div class="d-carousel">
                                 <div id="item-carousel-big-type-4" class="owl-carousel owl-center" data-wow-delay="1s">
                                     <div class="nft_pic mod-b">                            
-                                        <a href="07_modern-collection.html">
+                                        <a onclick="pullCollection(this)" data-value="4">
                                             <span class="nft_pic_info">
                                                 <span class="nft_pic_title">Blue Nomad</span>
                                                 <span class="nft_pic_by">Mamie Barnett</span>
+                                                <span id="collection" style="color: transparent;">3</span>
                                             </span>
                                         
                                             <div class="nft_pic_wrap">
@@ -167,7 +168,7 @@
                                     </div>
 
                                     <div class="nft_pic mod-b">                            
-                                        <a href="07_modern-collection.html">
+                                        <a onclick="pullCollection(this)" data-value="insenza">
                                             <span class="nft_pic_info">
                                                 <span class="nft_pic_title">Insenza 01</span>
                                                 <span class="nft_pic_by">Monica Hoffmann</span>
@@ -180,7 +181,7 @@
                                     </div>
 
                                     <div class="nft_pic mod-b">                            
-                                        <a href="07_modern-collection.html">
+                                        <a onclick="pullCollection(this)" data-value="insenza">
                                             <span class="nft_pic_info">
                                                 <span class="nft_pic_title">Insenza 10</span>
                                                 <span class="nft_pic_by">Monica Hoffmann</span>
@@ -193,10 +194,10 @@
                                     </div>  
 
                                     <div class="nft_pic mod-b">                            
-                                        <a href="07_modern-collection.html">
+                                        <a onclick="pullCollection(this)" data-value="valextra">
                                             <span class="nft_pic_info">
-                                                <span class="nft_pic_title">Manganite</span>
-                                                <span class="nft_pic_by">Fred Ryan</span>
+                                                <span class="nft_pic_title">Odysseus</span>
+                                                <span class="nft_pic_by">Valextra</span>
                                             </span>
                                             
                                             <div class="nft_pic_wrap">
@@ -207,7 +208,7 @@
 
 
                                     <div class="nft_pic mod-b">                            
-                                        <a href="07_modern-collection.html">
+                                        <a onclick="pullCollection(this)" data-value="miller">
                                             <span class="nft_pic_info">
                                                 <span class="nft_pic_title">Elutriator</span>
                                                 <span class="nft_pic_by">Grace Miller </span>
@@ -220,7 +221,7 @@
                                     </div>
 
                                     <div class="nft_pic mod-b">                            
-                                        <a href="07_modern-collection.html">
+                                        <a onclick="pullCollection(this)" data-value="prudy">
                                             <span class="nft_pic_info">
                                                 <span class="nft_pic_title">Nativities</span>
                                                 <span class="nft_pic_by">Prudy</span>
@@ -837,39 +838,39 @@
                             <h2>Popular Categories</h2>
                         </div>
                         <div class="col-md-2 col-sm-4 col-12 mb-sm-30 wow fadeInRight" data-wow-delay=".1s">
-                            <a href='explore.html' class="icon-box style-2 rounded">
+                            <a href='' onclick="takeIt(this)" data-value="Art" class="icon-box style-2 rounded">
                                 <i class="fa fa-image"></i>
                                 <span>Art</span>
                             </a>
                         </div>
-                        <div class="col-md-2 col-sm-4 col-12 mb-sm-30 wow fadeInRight" data-wow-delay=".2s">
-                            <a href='explore.html' class="icon-box style-2 rounded">
+                        <!-- <div class="col-md-2 col-sm-4 col-12 mb-sm-30 wow fadeInRight" data-wow-delay=".2s">
+                            <a href='' onclick="takeIt(this)" data-value="Music" class="icon-box style-2 rounded">
                                 <i class="fa fa-music"></i>
                                 <span>Music</span>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="col-md-2 col-sm-4 col-12 mb-sm-30 wow fadeInRight" data-wow-delay=".3s">
-                            <a href='explore.html' class="icon-box style-2 rounded">
+                            <a href=''  onclick="takeIt(this)" data-value="Sculptures" class="icon-box style-2 rounded">
                                 <i class="fa fa-search"></i>
-                                <span>Domain Names</span>
+                                <span>Sculptures</span>
                             </a>
                         </div>
                         <div class="col-md-2 col-sm-4 col-12 mb-sm-30 wow fadeInRight" data-wow-delay=".4s">
-                            <a href='explore.html' class="icon-box style-2 rounded">
-                                <i class="fa fa-globe"></i>
-                                <span>Virtual Worlds</span>
+                            <a href='' onclick="takeIt(this)" data-value="Bags" class="icon-box style-2 rounded">
+                                <i class="fa fa-"></i>
+                                <span>Bags</span>
                             </a>
                         </div>
                         <div class="col-md-2 col-sm-4 col-12 mb-sm-30 wow fadeInRight" data-wow-delay=".5s">
-                            <a href='explore.html' class="icon-box style-2 rounded">
-                                <i class="fa fa-vcard"></i>
-                                <span>Trading Cards</span>
+                            <a href=''  onclick="takeIt(this)" data-value="Jewelries"class="icon-box style-2 rounded">
+                                <i class="fa fa-ring"></i>
+                                <span>Jewelries</span>
                             </a>
                         </div>
                         <div class="col-md-2 col-sm-4 col-12 mb-sm-30 wow fadeInRight" data-wow-delay=".6s">
-                            <a href='explore.html' class="icon-box style-2 rounded">
+                            <a href='' onclick="takeIt(this)" data-value="ceramics and pottery" class="icon-box style-2 rounded">
                                 <i class="fa fa-th"></i>
-                                <span>More Categories</span>
+                                <span>Ceramics and Pottery</span>
                             </a>
                         </div>
                     </div>
@@ -1135,7 +1136,20 @@
 
     
     <script>
-   
+   function pullCollection (element){
+
+    var collection=element.dataset.value
+    localStorage.setItem("chosenCollection",collection)
+    location.href="filter.html"
+
+   }
+   function takeIt(element){
+    var categoriesLink=element.dataset.value
+localStorage.setItem("categoriesLink")
+location.href="categories.html"
+
+
+   }
    
         async function fetchUserInfo() {
             var parsedData = localStorage.getItem('user')
