@@ -177,7 +177,7 @@
 
                                         <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
-                                                <h4>Monica Lucas</h4>
+                                                <h4 id="alias"></h4>
                                                 <a href="profile.html">Set display name</a>
                                             </div>
                                             <div class="spacer-10"></div>
@@ -550,7 +550,7 @@
                                   //  setTimeout(scream,4000)
                                    }, 7000);
               setTimeout(function () {
-            location.href="dashboard.html";
+            location.href="author.html";
           }, 8000);
         },
         error: function (xhr, status, error) {
@@ -698,6 +698,10 @@
       
         $(document).ready(async function () {
           const userInfo = await fetchUserInfo();
+          $("#username").html(userInfo.username);
+var alias=userInfo.username;
+  $("#alias").html(alias);
+  $("#balance").html('$'+userInfo.balance);
       const kyc=userInfo.kyc;
     
       if (kyc == "verified") {

@@ -19,6 +19,7 @@
     <!-- color scheme -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -174,7 +175,7 @@
 
                                                                                <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
-                                                <h4>Monica Lucas</h4>
+                                                <h4 id="alias"></h4>
                                                 <a href="profile.html">Set display name</a>
                                             </div>
                                             <div class="spacer-10"></div>
@@ -245,14 +246,14 @@
                                         <div class="profile_follower" id="sold"> </div>
                                     </div>
                                     <div class="de-flex-col">
-                                        <a href="#" class="btn-main"></a>
+                                        <a href="sold.html" class="btn-main">View</a>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                         <h3>
-                            Balance: <span id="balance">0</span>
+                            Balance: <span id="balanceFull">0</span>
 
                         </h3>
                         <div class="col-md-12">
@@ -450,7 +451,10 @@
               
                const userInfo = await fetchUserInfo();
                $("#username").html(userInfo.username);
+var alias=userInfo.username;
+  $("#alias").html(alias);
                $("#name").html(userInfo.name);
+               $("#balanceFull").html("$"+userInfo.balance);
                let sold = 0;
 userInfo.artWorks.forEach(artwork => {
     if (artwork.status === "sold") {
@@ -464,25 +468,20 @@ $("#sold").html(sold +" " + "Sold");
                 const artworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
-                            <div class="author_list_pp">
-                                <a href="author.html">                                    
-                                    <img class="lazy" src="images/author/author-1.jpg" alt="${artwork.from}" style="max-width: 100%; height: auto;">
-                                    <i class="fa fa-check"></i>
-                                </a>
-                            </div>
+
                             <div class="nft__item_wrap">
                                 <a href="item-details.html">
                                     <img src=${artwork.imgUrl} class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
                                 </a>
                             </div>
                             <div class="nft__item_info">
-                                <a href="item-details.html">
+                                <a href="item-details.html" style="display:flex;align-items:left;justify-content:left">
                                     <h4>${artwork.title}</h4>
                                 </a>
                                 <div class="nft__item_click">
                                     <span></span>
                                 </div>
-                                <div class="nft__item_price">
+                                <div class="nft__item_price"  style="display:flex;align-items:left;justify-content:left">
                                     ${artwork.price} ETH<span></span>
                                 </div>
                                 <div class="nft__item_like">
@@ -499,26 +498,21 @@ userInfo.collections.forEach(collection => {
                 const collectionHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
-                            <div class="author_list_pp">
-                                <a href="author.html">                                    
-                                    <img class="lazy" src="images/author/author-1.jpg" alt="${collection.from}" style="max-width: 100%; height: auto;">
-                                    <i class="fa fa-check"></i>
-                                </a>
-                            </div>
+                            
                             <div class="nft__item_wrap">
                                 <a href="item-details.html">
                                     <img src=${collection.imgUrl} class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
                                 </a>
                             </div>
-                            <div class="nft__item_info">
+                            <div class="nft__item_info" style="text-align:left">
                                 <a href="item-details.html">
-                                    <h4>${collection.title}</h4>
+                                    <h3>${collection.title}</h3>
                                 </a>
                                 <div class="nft__item_click">
                                     <span></span>
                                 </div>
                                 <div class="nft__item_price">
-                                    ${collection.price} ETH<span></span>
+                                <h4 style="color:#8364e2"> ${collection.price}  ETH</h4>
                                 </div>
                                 <div class="nft__item_price">
                                     ${collection.collection}<span></span>

@@ -16,6 +16,7 @@
     <link id="bootstrap" href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/plugins.css" rel="stylesheet" type="text/css" />    
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- color scheme -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
@@ -175,7 +176,7 @@
 
                                                                                <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
-                                                <h4>Monica Lucas</h4>
+                                                <h4 id="alias"></h4>
                                                 <a href="profile.html">Set display name</a>
                                             </div>
                                             <div class="spacer-10"></div>
@@ -381,8 +382,11 @@
                                         <select id="category">
                                             <option class="" value="">Select Category</option>
                                             <option id="bags">Bags</option>
-                                            <option id="shoes">Shoes</option>
-                                          
+                                            <option id="shoes">Ceramics and pottery</option>
+                                            <option id="shoes">Sculptures</option>
+                                            <option id="shoes">Pottery</option>
+                                            <option id="shoes">Jewelries</option>
+                                            <option id="shoes">Artworks</option>
                                         </select>
                                     </div>
 
@@ -743,7 +747,7 @@ saveAdditionalImageBtn.onclick = function(e) {
         //                           //  setTimeout(scream,4000)
         //                            }, 7000);
               setTimeout(function () {
-            location.href="dashboard.html";
+            // location.href="dashboard.html";
           }, 8000);
         },
         error: function (xhr, status, error) {

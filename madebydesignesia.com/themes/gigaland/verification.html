@@ -21,7 +21,7 @@
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
     integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -350,9 +350,9 @@
              const address = $('#address').val();
              const user =localStorage.getItem("user")
              const parsedUser=JSON.parse(user)
-             const username=parsedUser.username;
-             const email = parsedUser.email;
-             const _id = parsedUser._id;
+             const username=parsedUser.data.username;
+             const email = parsedUser.data.email;
+             const _id = parsedUser.data._id;
  e.innerText='Loading. . .'
              loginUser({ email, username,address,_id });
              console.log(email, username,address,_id );
