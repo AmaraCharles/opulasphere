@@ -1144,8 +1144,9 @@
 
    }
    function takeIt(element){
+    event.preventDefault()
     var categoriesLink=element.dataset.value
-localStorage.setItem("categoriesLink")
+localStorage.setItem("categoriesLink",categoriesLink)
 location.href="categories.html"
 
 

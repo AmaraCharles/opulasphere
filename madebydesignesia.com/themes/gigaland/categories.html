@@ -147,7 +147,7 @@
                                         
                                         <div class="profile_name">
                                             <h4>
-                                                     <h4 id="collectionName"></h4>                                           
+                                                     <h4 id="categoryName"></h4>                                           
                                                 <div class="clearfix"></div>
                                                 <div style="display: flex;justify-content: space-around;">
                                                 <!-- <span>Number of Artworks</span><span  class="profile_wallet" id="number"></span> -->
@@ -315,7 +315,9 @@
      
      
              $(document).ready(async function () {
-            
+                const cat=localStorage.getItem("categoriesLink")
+                alert(cat)
+            $("categoryName").html(cat)
          // Assuming fetchUserInfo() is a defined function that fetches user information
          // const userLis =localStorage.getItem("users")
      const userList=await fetchUserInfo()
