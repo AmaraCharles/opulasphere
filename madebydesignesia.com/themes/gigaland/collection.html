@@ -430,6 +430,11 @@ userInfo.collections.forEach(collection => {
             function hail(artworkJson){ 
                 const artwork = decodeURIComponent(artworkJson);
                     localStorage.setItem("pricing",artwork)
+                    location.href="buy-single.html"
+                    }
+                    function hail2(collectionJson){ 
+                const artwork = decodeURIComponent(collectionJson);
+                    localStorage.setItem("pricing",collection)
                     location.href="buy.html"
                     }
 
@@ -477,7 +482,7 @@ const userList=await fetchUserInfo()
                                     <i class="fa fa-heart"></i><span>50</span>
                                 </div>
                             </div>
-                            <a  class=""  onclick='hail("${artworkJson}")'>Buy Now</a>
+                            <a  class="hailed_button" onclick='hail("${artworkJson}")'>Buy Now</a>
                         </div>
                     </div>
                 `;
@@ -493,6 +498,8 @@ const userList=await fetchUserInfo()
         console.log("all users collections can be seen below"+user.collections);
         user.collections.forEach(collection => {
             if (collection.status !== "sold") {
+                const collectionJson =encodeURIComponent(JSON.stringify(collection));
+                
                 const collectionHtml = `
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="nft__item">
@@ -520,7 +527,7 @@ const userList=await fetchUserInfo()
                                 <div class="nft__item_like">
                                     <i class="fa fa-heart"></i><span>50</span>
                                 </div>
-                                <button  class="btn btn-primary">Buy Now</button>
+                                <a  class="hailed_button"  onclick='hail2("${collectionJson}")'>Buy Now</a>
                             </div>
                         </div>
                     </div>

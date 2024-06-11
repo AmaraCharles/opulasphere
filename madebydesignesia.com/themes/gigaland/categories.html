@@ -11,6 +11,7 @@
     <meta content="Opulasphere - NFT Marketplace Website " name="description" />
     <meta content="" name="keywords" />
     <meta content="" name="author" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- CSS Files
     ================================================== -->
     <link id="bootstrap" href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -141,7 +142,7 @@
                            <div class="d_profile">
                                     <div class="profile_avatar">
                                         <div class="d_profile_img">
-                                            <img src="images/author/author-16.jpg" alt="">
+                                            <img src="" id="banner-img"  height="100" width="100"alt="">
                                             <i class="fa fa-check"></i>
                                         </div>
                                         
@@ -315,9 +316,26 @@
      
      
              $(document).ready(async function () {
-                const cat=localStorage.getItem("categoriesLink")
-                alert(cat)
-            $("categoryName").html(cat)
+               // Retrieve the category from localStorage
+const cat = localStorage.getItem("categoriesLink");
+
+// Get the image element by its ID
+const img = document.getElementById("banner-img");
+
+// Check if the image element exists
+if (img) {
+    // Check if the retrieved category is "Sculpture"
+    if (cat === "Sculptures") {
+        // Set the image source to "sculpture.png"
+        img.src = "sculpture.png";
+        console.log("Image source set to sculpture.png");
+    } else {
+        console.log("Category is not Sculpture:", cat);
+    }
+} else {
+    console.log("Image element with ID 'banner-img' not found.");
+}
+            $("#categoryName").html(cat)
          // Assuming fetchUserInfo() is a defined function that fetches user information
          // const userLis =localStorage.getItem("users")
      const userList=await fetchUserInfo()
