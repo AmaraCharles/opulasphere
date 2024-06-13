@@ -685,31 +685,42 @@
                                 <div class="widget">
                                     <h5>Marketplace</h5>
                                     <ul>
-                                        <li><a href="#">All NFTs</a></li>
-                                        <li><a href="#">Art</a></li>
-                                        <li><a href="#">Music</a></li>
-                                        <li><a href="#">Domain Names</a></li>
-                                        <li><a href="#">Virtual World</a></li>
-                                        <li><a href="#">Collectibles</a></li>
+                                        <li><a href="collection.html">All NFTs</a></li>
+                                        <li><a   onclick="takeIt(this)" data-value="Art">Art</a></li>
+                                        <li><a  onclick="takeIt(this)" data-value="Sculptures">Sculptures</a></li>
+                                        <li><a   onclick="takeIt(this)" data-value="Ceramics and Pottery">Ceramics and Pottery</a></li>
+                                        <li><a   onclick="takeIt(this)" data-value="Bags">Bags</a></li>
+                                        <li><a   onclick="takeIt(this)" data-value="Jewelries">Jewelries</a></li>
                                     </ul>
                                 </div>
                             </div>
+                            <script>
+                                function takeIt(element){
+                               event.preventDefault()
+                               var categoriesLink=element.dataset.value
+                           localStorage.setItem("categoriesLink",categoriesLink)
+                           location.href="categories.html"
+                           
+                           
+                              }
+                           </script>
 
                             <div class="col-lg-4 col-sm-6 col-xs-1">
                                 <div class="widget">
                                     <h5>Resources</h5>
                                     <ul>
-                                        <li><a href="#">Help Center</a></li>
-                                        <li><a href="#">Partners</a></li>
+                                        <li><a href="help-center.html">Help Center</a></li>
+                                        <!-- <li><a href="#">Partners</a></li>
                                         <li><a href="#">Suggestions</a></li>
                                         <li><a href="#">Discord</a></li>
                                         <li><a href="#">Docs</a></li>
-                                        <li><a href="#">Newsletter</a></li>
+                                        <li><a href="#">Newsletter</a></li> -->
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-sm-6 col-xs-1">
+                            
+                            <!-- <div class="col-lg-4 col-sm-6 col-xs-1">
                                 <div class="widget">
                                     <h5>Community</h5>
                                     <ul>
@@ -721,7 +732,7 @@
                                         <li><a href="#">Mailing List</a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 

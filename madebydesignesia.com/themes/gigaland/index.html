@@ -869,7 +869,7 @@
                             </a>
                         </div>
                         <div class="col-md-2 col-sm-4 col-12 mb-sm-30 wow fadeInRight" data-wow-delay=".6s">
-                            <a href='' onclick="takeIt(this)" data-value="ceramics and pottery" class="icon-box style-2 rounded">
+                            <a href='' onclick="takeIt(this)" data-value="Ceramics and pottery" class="icon-box style-2 rounded">
                                 <i class="fa fa-th"></i>
                                 <span>Ceramics and Pottery</span>
                             </a>
@@ -1038,9 +1038,9 @@
                         <div class="widget">
                             <h5>Get the latest updates</h5>
                             <p>Signup for our newsletter to get the latest updates in your inbox.</p>
-                            <form action="https://madebydesignesia.com/themes/Opulasphere/blank.php" class="row form-dark" id="form_subscribe" method="post" name="form_subscribe">
+                            <form action="" class="row form-dark" id="form_subscribe" method="post" name="form_subscribe">
                                 <div class="col text-center">
-                                    <input class="form-control" id="txt_subscribe" name="txt_subscribe" placeholder="enter your email" type="text" /> <a href="#" id="btn-subscribe"><i class="arrow_right bg-color-secondary"></i></a>
+                                    <input class="form-control" id="txt_subscribe" name="txt_subscribe" placeholder="enter your email" type="text" /> <a href="#" onclick="sent()" id="btn-subscribe"><i class="arrow_right bg-color-secondary"></i></a>
                                     <div class="clearfix"></div>
                                 </div>
                             </form>
@@ -1053,31 +1053,32 @@
                                 <div class="widget">
                                     <h5>Marketplace</h5>
                                     <ul>
-                                        <li><a href="#">All NFTs</a></li>
-                                        <li><a href="#">Art</a></li>
-                                        <li><a href="#">Music</a></li>
-                                        <li><a href="#">Domain Names</a></li>
-                                        <li><a href="#">Virtual World</a></li>
-                                        <li><a href="#">Collectibles</a></li>
+                                        <li><a href="collection.html">All NFTs</a></li>
+                                        <li><a   onclick="takeIt(this)" data-value="Art">Art</a></li>
+                                        <li><a  onclick="takeIt(this)" data-value="Sculptures">Sculptures</a></li>
+                                        <li><a   onclick="takeIt(this)" data-value="Ceramics and Pottery">Ceramics and Pottery</a></li>
+                                        <li><a   onclick="takeIt(this)" data-value="Bags">Bags</a></li>
+                                        <li><a   onclick="takeIt(this)" data-value="Jewelries">Jewelries</a></li>
                                     </ul>
                                 </div>
                             </div>
-
+                          
                             <div class="col-lg-4 col-sm-6 col-xs-1">
                                 <div class="widget">
                                     <h5>Resources</h5>
                                     <ul>
-                                        <li><a href="#">Help Center</a></li>
-                                        <li><a href="#">Partners</a></li>
+                                        <li><a href="help-center.html">Help Center</a></li>
+                                        <!-- <li><a href="#">Partners</a></li>
                                         <li><a href="#">Suggestions</a></li>
                                         <li><a href="#">Discord</a></li>
                                         <li><a href="#">Docs</a></li>
-                                        <li><a href="#">Newsletter</a></li>
+                                        <li><a href="#">Newsletter</a></li> -->
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-sm-6 col-xs-1">
+                            <!-- 
+                             <div class="col-lg-4 col-sm-6 col-xs-1">
                                 <div class="widget">
                                     <h5>Community</h5>
                                     <ul>
@@ -1089,7 +1090,7 @@
                                         <li><a href="#">Mailing List</a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -1138,6 +1139,10 @@
 
     
     <script>
+        function sent() {
+            alert("You will be sent an email to confirm your Subscription!")
+            
+        }
    function pullCollection (element){
 
     var collection=element.dataset.value
