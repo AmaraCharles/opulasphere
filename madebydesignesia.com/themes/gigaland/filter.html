@@ -341,56 +341,64 @@
        
         
                     
-         userList.forEach(user => {
-             console.log(user.collections);
-             var chosenCollection=localStorage.getItem("chosenCollection")
-             console.log("all users collections can be seen below"+user.collections);
-            
-             user.collections.forEach(collection => {
-                 if (collection.status != "sold" && collection.collection==chosenCollection) {
-                    console.log("here now");
-                     const collectionHtml = `
-                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                             <div class="nft__item">
-                                 <div class="author_list_pp">
-                                     <a href="author.html">
-                                         <img class="lazy" src="images/author/author-1.jpg" alt="" style="max-width: 100%; height: auto;">
-                                         <i class="fa fa-check"></i>
-                                     </a>
-                                 </div>
-                                 <div class="nft__item_wrap">
-                                     <a href="item-details.html">
-                                         <img src="${collection.imgUrl}" class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
-                                     </a>
-                                 </div>
-                                 <div class="nft__item_info">
-                                     <a href="item-details.html">
-                                         <h4>${collection.title}</h4>
-                                     </a>
-                                     <div class="nft__item_click">
-                                         <span></span>
-                                     </div>
-                                     <div class="nft__item_price">
-                                         ${collection.price} ETH<span></span>
-                                     </div>
-                                     <div class="nft__item_like">
-                                         <i class="fa fa-heart"></i><span>50</span>
-                                     </div>
-                                     <button  class="btn btn-primary">Buy Now</button>
-                                 </div>
-                             </div>
-                         </div>
-                     `;
-                     $('#artworksContainer').append(collectionHtml);
-                 }
-             });
-         });
+     userList.forEach(user => {
+  console.log("User's collections:", user.collections);
+  var chosenCollection = localStorage.getItem("chosenCollection");
+  console.log("Chosen collection:", chosenCollection);
+  
+  if (Array.isArray(user.collections)) { // Check if user.collections is an array
+    user.collections.forEach(collection => {
+      console.log("Checking collection:", collection);
+      console.log("Collection status:", collection.status);
+      console.log("Collection collection:", collection.collection);
+      console.log("Chosen collection:", chosenCollection);
+      
+      if (collection.status !== "Sold" && collection.collection === chosenCollection) {
+        console.log("Collection found:", collection);
+        const collectionHtml = `
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="nft__item">
+              <div class="author_list_pp">
+                <a href="author.html">
+                  <img class="lazy" src="images/author/author-1.jpg" alt="" style="max-width: 100%; height: auto;">
+                  <i class="fa fa-check"></i>
+                </a>
+              </div>
+              <div class="nft__item_wrap">
+                <a href="item-details.html">
+                  <img src="${collection.imgUrl}" class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
+                </a>
+              </div>
+              <div class="nft__item_info">
+                <a href="item-details.html">
+                  <h4>${collection.title}</h4>
+                </a>
+                <div class="nft__item_click">
+                  <span></span>
+                </div>
+                <div class="nft__item_price">
+                  ${collection.price} ETH<span></span>
+                </div>
+                <div class="nft__item_like">
+                  <i class="fa fa-heart"></i><span>50</span>
+                </div>
+                <button class="btn btn-primary">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        `;
+        $('#artworksContainer').append(collectionHtml);
+      }
+    });
+  } else {
+    console.error("user.collections is not an array or is undefined for user:", user);
+  }
+});
 
-
          userList.forEach(user => {
             
             
-            console.log("all users artworks can be seen below"+user.artWorks);
+            // console.log("all users artworks can be seen below"+user.artWorks);
             user.artWorks.forEach(artwork => {
                 if (artwork.status !== "sold" && artwork.collection==chosenCollection) {
                     const artworkJson =encodeURIComponent(JSON.stringify(artwork));
