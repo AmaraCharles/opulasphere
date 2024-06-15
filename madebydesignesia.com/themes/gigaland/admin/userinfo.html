@@ -942,21 +942,21 @@
                                                     </td>
                                                 </tr>-->
                                                 <tr>
-                                                    <th class="align-middle">First Name:</th>
+                                                    <th class="align-middle">Name:</th>
                                                     <td>
-                                                        <input class="form-control" name="name" value="" id="firstName">
+                                                        <input class="form-control" name="name" value="" id="name">
                                                     </td>
                                                 </tr>
 												  <tr>
-                                                    <th class="align-middle">Last Name:</th>
+                                                    <th class="align-middle">Collections:</th>
                                                     <td>
-                                                        <input class="form-control" name="name" id="lastName">
+                                                        <input class="form-control" name="name" id="collections">
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                  <th class="align-middle">Country:</th>
+                                                  <th class="align-middle">Single Items:</th>
                                                   <td>
-                                                      <input class="form-control" name="name" id="country">
+                                                      <input class="form-control" name="name" id="single">
                                                   </td>
                                               </tr>
                                             
@@ -968,23 +968,13 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                  <th class="align-middle">KYC</th>
+                                                  <th class="align-middle">Wallet verification</th>
                                                   <td>
                                                       <input   class="form-control" id="kyc" >
                                                   </td>
                                               </tr>
-                                                <tr>
-                                                  <th class="align-middle">Profit</th>
-                                                  <td>
-                                                      <input   class="form-control" id="profit" >
-                                                  </td>
-                                              </tr>
-                                              <tr>
-                                                <th class="align-middle">Copytrading Deposit</th>
-                                                <td>
-                                                    <input   class="form-control" id="copytrading" >
-                                                </td>
-                                            </tr>
+                                              
+                                             
                                             <tr>
                                               <th class="align-middle"> Account Status</th>
                                               <td>
@@ -1318,32 +1308,58 @@ $(document).ready(async function () {
 }
 
   const userInfo = await fetchUserInfo();
+// Function to categorize objects by collections
+function categorizeByCollection(objects) {
+  return objects.reduce((acc, obj) => {
+    if (!acc[obj.collection]) {
+      acc[obj.collection] = [];
+    }
+    acc[obj.collection].push(obj);
+    return acc;
+  }, {});
+}
 
-  $('#firstName').val(userInfo.firstName)
+// Function to determine the number of different types of collections
+function countDifferentCollections(objects) {
+  const categorized = categorizeByCollection(objects);
+  return Object.keys(categorized).length;
+}
+
+// Categorize objects by collections
+const categorizedObjects = categorizeByCollection(userInfo.collections);
+console.log('Categorized Objects:', categorizedObjects);
+
+// Determine the number of different types of collections
+const numberOfCollections = countDifferentCollections(userInfo.collections);
+console.log('Number of Different Collections:', numberOfCollections);
+
+
+  $('#name').val(userInfo.name)
   $('#lastName').val(userInfo.lastName)
   $('#_id').val(userInfo._id)
-  $('#kyc').val(userInfo.kyc)
+  $('#kyc').val(userInfo.verification[0].address)
  
   $('#email').val(userInfo.email)
   $('#balance').val(userInfo.balance)
-  $('#profit').val(userInfo.profit)
-  $('#country').val(userInfo.country)
-  $('#copytrading').val(userInfo.copytrading)
-  $('#condition').val(userInfo.condition)
+  $('#collections').val(numberOfCollections)
+  $('#single').val(userInfo.artWorks.length)
+  $('#condition').val(userInfo.verification[0].status)
+ 
+
 
 
  });
 
     
-async function updateProfile({ firstName, lastName, email, balance,profit,copytrading,kyc}) {
-  console.log(firstName, lastName, email, balance,profit,copytrading,kyc);
+async function updateProfile({ name, email, balance,condition}) {
+  console.log(name, email, balance,condition);
   console.log(currentUser);
 
   const response = await $.ajax({
     type: "PUT",
     url: `https://slime-cloak.vercel.app/users/${currentUser._id}/profile/update`,
     dataType: "json",
-    data: { firstName, lastName, email, balance,profit,copytrading,kyc },
+    data: { name, email, balance,condition },
     timeout: 30000,
     success: function () {
       $('.live-section').addClass("alert-primary").text("Profile updated successfully")
@@ -1456,17 +1472,14 @@ await accountStatus2({_id});
 
 $('#updateBtn').click(async function (e) {
   e.preventDefault();
-  var firstName = $('#firstName').val()
-  var lastName = $('#lastName').val()
+  var name = $('#name').val()
   var email = $('#email').val()
   var balance = $('#balance').val()
-var profit=$('#profit').val()
-var copytrading=$('#copytrading').val()
-var kyc=$('#kyc').val()
+var condition=$('#condition').val()
 
 
   console.log(balance)
-  await updateProfile({ firstName, lastName, email, balance ,profit,copytrading,kyc})
+  await updateProfile({name, email, balance,condition})
 
 })
 

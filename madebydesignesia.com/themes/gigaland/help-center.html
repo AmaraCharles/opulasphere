@@ -19,6 +19,30 @@
     <!-- color scheme -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        .card-header .btn {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          color: #007bff;
+        }
+        .card-header .btn .fas {
+          color: purple;
+        }
+        .card-header .btn.collapsed .fa-plus {
+          display: inline;
+        }
+        .card-header .btn.collapsed .fa-minus {
+          display: none;
+        }
+        .card-header .btn:not(.collapsed) .fa-plus {
+          display: none;
+        }
+        .card-header .btn:not(.collapsed) .fa-minus {
+          display: inline;
+        }
+      </style>
 </head>
 
 <body>
@@ -159,7 +183,7 @@
                             <div class="feature-box f-boxed style-3 text-center">
                                 <div class="text">
                                     <h4>Getting Started</h4>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam.</p>
+                                    <p>New to NFTs? No problem! Our platform is designed to be user-friendly, even for beginners. To get started, create an account and set up your digital wallet. This wallet will be used to store your NFTs and manage your transactions. Next, explore our marketplace to understand the types of NFTs available and their values. You can buy, sell, or even create your own NFTs. For detailed guidance, visit our help section or reach out to our support team. Welcome to the future of digital ownership!</p>
                                     <a href="#" class="btn-main">Read more</a>
                                 </div>
                             </div>
@@ -169,7 +193,7 @@
                             <div class="feature-box f-boxed style-3 text-center">
                                 <div class="text">
                                     <h4>Buying</h4>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam.</p>
+                                    <p> Dive into the exciting world of digital ownership by purchasing NFTs on our platform. Our marketplace offers a diverse array of NFTs, including art, music, videos, and virtual goods. To buy an NFT, simply browse our collections, choose the item you love, and place a bid or buy it instantly if the seller has set a fixed price. Secure your purchase using your preferred cryptocurrency, and the NFT will be transferred to your digital wallet. Enjoy owning a unique piece of digital history!</p>
                                     <a href="#" class="btn-main">Read more</a>
                                 </div>
                             </div>
@@ -179,23 +203,25 @@
                             <div class="feature-box f-boxed style-3 text-center">
                                 <div class="text">
                                     <h4>Selling</h4>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam.</p>
+                                    <p> Turn your digital creations into valuable assets by selling NFTs on our marketplace. Whether you are an artist, musician, or content creator, our platform makes it easy to list your NFTs for sale. Simply create an account, upload your digital files, set your price, and choose between auction or fixed price. Once your NFT is listed, it becomes visible to a global audience of potential buyers. When a sale is made, you receive payment directly to your digital wallet. Start monetizing your creativity today!</p>
                                     <a href="#" class="btn-main">Read more</a>
                                 </div>
                             </div>
                         </div>  
 
-                        <div class="col-lg-4 col-md-6 mb25">
-                            <div class="feature-box f-boxed style-3 text-center">
-                                <div class="text">
+                        <div class="col-lg-4 col-md-6 mb25 ">
+                            <div class="feature-box f-boxed style-3 text-center card">
+                                <div class="text card-card">
                                     <h4>Creating</h4>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam.</p>
-                                    <a href="#" class="btn-main">Read more</a>
+                                    <p class="card-text">
+          
+                                        Unleash your creativity and turn your digital works into NFTs with ease. Our platform provides a straightforward process to create your own NFTs. First, ensure you have a digital wallet set up. <span class="more-text">Then, navigate to the "Create" section, where you can upload your digital files (such as images, or video), add metadata (like title, description, and properties), and mint your NFT. Once minted, your NFT can be listed for sale in our marketplace. Share your unique creations with the world and earn from your talent!</span></p>
+                                    <a href="#" class="btn-main btn btn-primary read-more-btn">Read more</a>
                                 </div>
                             </div>
                         </div>  
 
-                        <div class="col-lg-4 col-md-6 mb25">
+                        <!-- <div class="col-lg-4 col-md-6 mb25">
                             <div class="feature-box f-boxed style-3 text-center">
                                 <div class="text">
                                     <h4>Partners</h4>
@@ -213,7 +239,77 @@
                                     <a href="#" class="btn-main">Read more</a>
                                 </div>
                             </div>
-                        </div>                      
+                        </div>                       -->
+                        <section>
+                            <h1 class="text-center" style=" color:#8364e2">FAQs</h1>
+                        <div class="container mt-5">
+                            <div class="accordion" id="faqAccordion">
+                              <div class="card">
+                                <div class="card-header" id="headingOne" style="display: flex;justify-content: space-between;">
+                                    <span>  What is Lorem Ipsum?</span>
+
+                                  <h2 class="mb-0">
+                                                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    
+                                      <span>
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                      </span>
+                                    </button>
+                                  </h2>
+                                </div>
+                       
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card">
+                                <div class="card-header" id="headingTwo" style="display: flex;justify-content: space-between;">
+                                    <span>Why do we use it?</span>
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                      
+                                      <span>
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                      </span>
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card">
+                                <div class="card-header" id="headingThree" style="display: flex;justify-content: space-between;">
+                                    <span> Where can I get some?</span>
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                     
+                                      <span>
+                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-minus"></i>
+                                      </span>
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+                                  </div>
+                                </div>
+                              </div>
+                            </section>
+                            </div>
+                          </div>
+                        
+                          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+                          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
                     </div>
                 </div>
             </section>
@@ -289,7 +385,7 @@
                             <div class="de-flex">
                                 <div class="de-flex-col">
                                     <a href="index.html">
-                                        <img alt="" class="f-logo" src="images/logo-light.png" /><span class="copy">&copy; Copyright 2023 - Opulasphere by Designesia</span>
+                                        <img alt="" class="f-logo" src="images/logo-light.png" /><span class="copy">&copy; Copyright 2023 - Opulasphere.com</span>
                                     </a>
                                 </div>
                                 <div class="de-flex-col">
@@ -310,7 +406,20 @@
         <!-- footer close -->
         
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const readMoreBtn = document.querySelector('.read-more-btn');
+        const moreText = document.querySelector('.more-text');
+  
+        readMoreBtn.addEventListener('click', () => {
+          moreText.style.display = moreText.style.display === 'none' || moreText.style.display === '' ? 'inline' : 'none';
+          readMoreBtn.textContent = readMoreBtn.textContent === 'Read More' ? 'Read Less' : 'Read More';
+        });
+      });
+    </script>
      <!-- <div id="selector">
         <div id="demo-rtl" class="sc-opt">
             <div class="sc-icon">RTL</div><span class="sc-val">Click to Enable</span>

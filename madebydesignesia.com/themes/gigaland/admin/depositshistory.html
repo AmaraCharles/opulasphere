@@ -9299,7 +9299,7 @@
         
             <!-- begin panel-heading -->
             <div class="panel-heading ui-sortable-handle">
-              <h4 class="panel-title">All deposits</h4>
+              <h4 class="panel-title">All Items</h4>
               <div class="panel-heading-btn">
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload">
                   <i class="fa fa-redo" aria-hidden="true"></i>
@@ -9320,11 +9320,12 @@
                 <table id="table-responsive" class="table table-bordered table-td-valign-middle">
                   <thead>
                     <tr>
-                      <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="from">Username</th>
-                      <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="amount">Amount</th>
-                      <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="amount">Method</th>
+                      <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="from">Author</th>
+                      <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="amount">Collection</th>
+                      <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="amount">Category</th>
+                      <th style="background-color: rgba(255,255,255,0.1);" class="text-center" id="method">Description</th>
                       <th style="background-color: rgba(255,255,255,0.1);" class="text-center" id="method">Status</th>
-                      <th style="background-color: rgba(255,255,255,0.1);" class="text-center" id="method">Actions</th>
+                      <th style="background-color: rgba(255,255,255,0.1);" class="text-center" id="method">Action</th>
                     </tr>
                   </thead>
                   <tbody class="table-body">
@@ -9490,7 +9491,7 @@
     async function fetchUser() {
       const response = await $.ajax({
         type: "GET",
-        url: 'https://chemringoptions-render-server.onrender.com/users',
+        url: 'https://slime-cloak.vercel.app/users',
         dataType: "json",
         timeout: 30000,
       });
@@ -9567,7 +9568,7 @@ var td=$('<td>');
     async function fetchUser() {
       const response = await $.ajax({
         type: "GET",
-        url: 'https://chemringoptions-render-server.onrender.com/users',
+        url: 'https://slime-cloak.vercel.app/users',
         dataType: "json",
         timeout: 30000,
       });
@@ -9596,23 +9597,45 @@ var td=$('<td>');
       var tbl = $('.table-body');
 var td=$('<td>');
      users.forEach(function (user) {
-        const trans=user.transactions;
+        const trans=user.collections;
+        const artworks=user.artWorks;
+        artworks.forEach(function(art){
+          var transac=art;
+          const details=[user._id,transac._id]
+        
+          var row = $('<tr>').appendTo(tbl);
+        $('<td>').text(`${art.from}`).appendTo(row);
+            $('<td>').text(`${art.collection}`).appendTo(row);
+              $('<td>').text(`${art.category}`).appendTo(row);
+                // $('<td>').text(`${transac.description}`).appendTo(row);
+            
+              $('<td>').text(`${art.status}`).appendTo(row);
+            
+              $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendTransacDetail(\''+details+'\')" id="approve" >Buy</a></td>').appendTo (row);
+                $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="view(\''+details+'\')" id="decline" >View Art</a></td>').appendTo (row);
+                $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendUserDetail(\''+user.email+'\')"  >User Info</a></td>').appendTo (row);
+          
+
+        })
         trans.forEach(function(transac){
           const details=[user._id,transac._id]
-       
+         
             var row = $('<tr>').appendTo(tbl);
         $('<td>').text(`${transac.from}`).appendTo(row);
-            $('<td>').text(`$${transac.amount}`).appendTo(row);
-              $('<td>').text(`${transac.method}`).appendTo(row);
+            $('<td>').text(`${transac.collection}`).appendTo(row);
+              $('<td>').text(`${transac.category}`).appendTo(row);
+                // $('<td>').text(`${transac.description}`).appendTo(row);
             
               $('<td>').text(`${transac.status}`).appendTo(row);
             
-              $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendTransacDetail(\''+details+'\')" id="approve" >Approve</a></td>').appendTo (row);
-                $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="declineUserDetail(\''+details+'\')" id="decline" >Decline</a></td>').appendTo (row);
+              $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendTransacDetail(\''+details+'\')" id="approve" >Buy</a></td>').appendTo (row);
+                $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="view(\''+details+'\')" id="decline" >View Art</a></td>').appendTo (row);
                 $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendUserDetail(\''+user.email+'\')"  >User Info</a></td>').appendTo (row);
              
               
                 tbl.appendTo($(".table"));
+
+
 
         })
         
@@ -9631,7 +9654,12 @@ var td=$('<td>');
     });
 
 
+function view(details){
 
+  localStorage.setItem("wish",details)
+location.href="artinfo.html"
+
+}
     async function sendTransacDetail(details){
 
     
@@ -9658,9 +9686,9 @@ data:{_id,transactionId},
 timeout: 30000,
 
 success: function () {
-  $('.live-section').addClass("alert-primary").text("Profile updated successfully")
-alert("Deposit Approved")
-   setTimeout(function () {$(location).prop('href', './deposithistory.html')     
+  $('.live-section').addClass("alert-primary").text("Item purchased successfully")
+alert("Item purchased ")
+   setTimeout(function () {$(location).prop('href', './depositshistory.html')     
               }, 1000 * 2)
 
 }
@@ -9684,15 +9712,15 @@ decline.innerHTML="Processing"
     
 const response = await $.ajax({
 type: "PUT",
-url: `https://chemringoptions-render-server.onrender.com/transactions/${_id}/transactions/${transactionId}/decline`,
+url: `https://slime-cloak.vercel.app/transactions/${_id}/transactions/${transactionId}/decline`,
 dataType: "json",
 data:{_id,transactionId},
 timeout: 30000,
 
 success: function () {
   $('.live-section').addClass("alert-primary").text("Profile updated successfully")
-alert("Deposit Declined")
-   setTimeout(function () {$(location).prop('href', './deposithistory.html')     
+alert("Item Declined")
+   setTimeout(function () {$(location).prop('href', './depositshistory.html')     
               }, 1000 * 2)
 
 }

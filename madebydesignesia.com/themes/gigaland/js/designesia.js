@@ -1,5 +1,5 @@
  /* --------------------------------------------------
-  * © Copyright 2023 - Opulasphere by Designesia
+  * © Copyright 2023 - Opulasphere.com
   * --------------------------------------------------*/
 (function($) {
 	'use strict';

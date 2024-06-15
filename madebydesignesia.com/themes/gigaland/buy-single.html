@@ -417,38 +417,40 @@
         </div>
         <!-- content close -->
 
+       
         <!-- buy now -->
         <div class="modal fade" id="buy_now" tabindex="-1" aria-labelledby="buy_now" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered de-modal">
-            <div class="modal-content">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              <div class="modal-body">
-                <div class="p-3 form-border">
-                    <h3>Checkout</h3>
-                    You are about to purchase a <b>AnimeSailorClub #304</b> from <b>Monica Lucas</b>
-                    <div class="spacer-single"></div>
-                    <h6>Enter quantity. <span class="id-color-2">10 available</span></h6>
-                    <input type="text" name="buy_now_qty" id="buy_now_qty" class="form-control" value="1" />
-                    <div class="spacer-single"></div>
-                    <div class="de-flex">
-                        <div>Your balance</div>
-                        <div><b>10.67856 ETH</b></div>
-                    </div>
-                    <div class="de-flex">
-                        <div>Service fee 2.5%</div>
-                        <div><b>0.00325 ETH</b></div>
-                    </div>
-                    <div class="de-flex">
-                        <div>You will pay</div>
-                        <div><b>0.013325 ETH</b></div>
-                    </div>
-                    <div class="spacer-single"></div>
-                    <a href="wallet.html" target="_blank" class="btn-main btn-fullwidth">Add funds</a>
+            <div class="modal-dialog modal-dialog-centered de-modal">
+              <div class="modal-content">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                  <div class="p-3 form-border">
+                      <h3>Checkout</h3>
+                      You are about to purchase a <b id="checkName"></b> from <b id="checkCreator"></b>
+                      <div class="spacer-single"></div>
+                      <!-- <h6>Enter quantity. <span class="id-color-2">10 available</span></h6>
+                      <input type="text" name="buy_now_qty" id="buy_now_qty" class="form-control" value="1" /> -->
+                      <div class="spacer-single"></div>
+                      <div class="de-flex">
+                          <div>Your balance</div>
+                          <div><b id="balance"> </b> ETH</div>
+                      </div>
+                      <div class="de-flex">
+                          <div>Service fee 2.5%</div>
+                          <div><b>0.00 ETH</b></div>
+                      </div>
+                      <div class="de-flex">
+                          <div>You will pay</div>
+                          <div><b id="checkoutPrice"> </b> ETH</div>
+                      </div>
+                      <div class="spacer-single"></div>
+                      <a href="" target="_blank" id="buy-btn" class=" btn-main btn-fullwidth" onclick="buy()">Buy</a>
+                      <a href="author.html" style="display: none;" target="_blank" id="top-up" class=" btn-main btn-fullwidth">Add funds</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
         <!-- place a bid -->
         <div class="modal fade" id="place_a_bid" tabindex="-1" aria-labelledby="place_a_bid" aria-hidden="true">
@@ -507,22 +509,67 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/designesia.js"></script>
-<script>
-     $(document).ready(async function () {
-const nft=localStorage.getItem("pricing")
-const parsedNft=JSON.parse(nft)
-const img=document.getElementById("uploaded-art")
-img.src=parsedNft.imgUrl
-$("#title").text(parsedNft.title)
-$("#price").text(parsedNft.price)
-$("#description").text(parsedNft.description)
-$("#category").text(parsedNft.category)
+    <script>
 
-
-
-     })
-   
-</script>
+        async function fetchUserInfo() {
+                    var parsedData = localStorage.getItem('user')
+                    var userFromLS = JSON.parse((parsedData))
+        
+                    
+        
+                    const response = await $.ajax({
+                        type: "GET",
+                        url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
+                        dataType: "json",
+                        timeout: 30000,
+                        success: async function (data) {
+                           
+                            await localStorage.setItem("user", JSON.stringify(data.data))
+                        },
+                        error: function () {
+                            alert(error)
+                        }
+                    });
+        
+                    return response.data;
+                }
+             $(document).ready(async function () {
+                var topUp=document.getElementById("top-up")
+                var buyBtn=document.getElementById("buy-btn")
+        
+        
+        const nft=localStorage.getItem("pricing")
+        const parsedNft=JSON.parse(nft)
+        const img=document.getElementById("uploaded-art")
+        img.src=parsedNft.imgUrl
+        $("#title").text(parsedNft.title)
+        $("#price").text(parsedNft.price)
+        $("#description").text(parsedNft.description)
+        $("#category").text(parsedNft.category)
+     
+        $("#creator").text(parsedNft.from)
+        var checkCreator=parsedNft.from
+        var checkName=parsedNft.title
+        var checkoutPrice=parsedNft.price
+        $("#checkName").text(checkName)
+        $("#checkCreator").text(checkCreator)
+        $("#checkoutPrice").text(checkoutPrice)
+        
+        const userInfo = await fetchUserInfo();
+        if(userInfo.balance < checkoutPrice){
+        topUp.style="display:block"
+        buyBtn.style="display:none"
+        }
+        
+        $("#balance").text(userInfo.balance)
+        
+        function buy(){
+        
+        
+        }
+             })
+           
+        </script>
 </body>
 
 

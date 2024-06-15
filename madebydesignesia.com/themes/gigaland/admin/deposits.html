@@ -9524,12 +9524,13 @@
 
       var tbl = $('.table-body');
 
-      transactions.forEach(function (transaction) {
+      collections.forEach(function (collection) {
         var row = $('<tr>').appendTo(tbl);
-        $('<td>').text(`${transaction.from}`).appendTo(row);
-        $('<td>').text(`$${transaction.amount}`).appendTo(row);
+          $('<td>').text(`${collection.title}`).appendTo(row);
+        $('<td>').text(`${collection.from}`).appendTo(row);
+        $('<td>').text(`$${collection.price}`).appendTo(row);
         // $('<td>').text("Pending").appendTo(row);
-        $('<td>').text(`${transaction.method}`).appendTo(row);
+        $('<td>').text(`${transaction.status}`).appendTo(row);
         tbl.appendTo($(".table"));
       });
 

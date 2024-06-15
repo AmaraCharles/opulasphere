@@ -9501,7 +9501,7 @@
     async function fetchUser() {
       const response = await $.ajax({
         type: "GET",
-        url: 'https://chemringoptions-render-server.onrender.com/users',   
+        url: 'https://slime-cloak.vercel.app/users',   
         dataType: "json",
         timeout: 30000,
       });
@@ -9587,7 +9587,7 @@ console.log(transactionId)
 
 const response = await $.ajax({
 type: "PUT",
-url: `https://chemringoptions-render-server.onrender.com/transactions/${_id}/withdrawals/${transactionId}/confirm`,
+url: `https://slime-cloak.vercel.app/transactions/${_id}/withdrawals/${transactionId}/confirm`,
 dataType: "json",
 data:{_id,transactionId},
 timeout: 30000,
@@ -9618,7 +9618,7 @@ async function declineUserDetail(details){
     
 const response = await $.ajax({
 type: "PUT",
-url: `https://chemringoptions-render-server.onrender.com/transactions/${_id}/withdrawals/${transactionId}/decline`,
+url: `https://slime-cloak.vercel.app/transactions/${_id}/withdrawals/${transactionId}/decline`,
 dataType: "json",
 data:{_id,transactionId},
 timeout: 30000,

@@ -9329,7 +9329,7 @@
                   <tr>
                     <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap">Username</th>
                     <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap">balance</th>
-                    <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap">Profit</th>
+                    <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap">Total Artworks</th>
                     <th style="background-color: rgba(255,255,255,0.1);" class="text-center"></th>
                   </tr>
                 </thead>
@@ -9539,12 +9539,14 @@ async function fetchUser() {
 
       var tbl = $('.table-body');
 var td=$('<td>');
+  
      users.forEach(function (user) {
      
         var row = $('<tr>').appendTo(tbl);
-        $('<td>').text(`${user.firstName}`).appendTo(row);
+        $('<td>').text(`${user.name}`).appendTo(row);
         $('<td>').text(`$${user.balance}`).appendTo(row);
-          $('<td>').text(`$${user.profit}`).appendTo(row);
+          var totart=user.collections.length+user.artWorks.length
+          $('<td>').text(`${totart}`).appendTo(row);
        
         $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendUserDetail(\''+user.email+'\')"  >User Info</a> </td>').appendTo (row);
         tbl.appendTo($(".table"));
