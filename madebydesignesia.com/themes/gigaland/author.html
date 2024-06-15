@@ -531,6 +531,10 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
 
             
            userInfo.artWorks.forEach(artwork => {
+            if (collection==null || "undefined"){
+        alert("no collection")
+    }
+   else{
                 const artworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
@@ -557,11 +561,14 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                         </div>
                     </div>
                 `;
-                $('#artworksContainer').append(artworkHtml);
+                $('#artworksContainer').append(artworkHtml);}
             });
        
 userInfo.collections.forEach(collection => {
-                const collectionHtml = `
+    if (collection==null || "undefined"){
+        alert("no collection")
+    }
+         else{       const collectionHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
                             
@@ -593,7 +600,7 @@ userInfo.collections.forEach(collection => {
                         </div>
                     </div>
                 `;
-                $('#collectionContainer').append(collectionHtml);
+                $('#collectionContainer').append(collectionHtml);}
             });
 
 
