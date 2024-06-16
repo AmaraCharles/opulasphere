@@ -1199,10 +1199,15 @@ $('#saveAdditionalImageBtn').html("Loading...")
   
   
   }
+  var uploadBtn=$("#upload-button")
   
+function blur (){
+    uploadBtn.style="opacity:0.5"
+  uploadBtn.innerHTML="minting. . ."
+}
   
     $('#upload-button').click(async function (event) {
-  
+ 
       event.preventDefault();
       function release({firstName}){
   
@@ -1240,7 +1245,7 @@ $('#saveAdditionalImageBtn').html("Loading...")
         release({firstName})
       
   }
-  $('#upload-button').html("Loading...")
+  $('#upload-button').val("minting...")
   
   
   
