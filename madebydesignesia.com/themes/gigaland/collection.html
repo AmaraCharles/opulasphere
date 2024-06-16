@@ -471,7 +471,7 @@ const userList=await fetchUserInfo()
        
         console.log("all users artworks can be seen below"+user.artWorks);
         user.artWorks.forEach(artwork => {
-            if (artwork.status !== "sold") {
+            if (artwork.status !== "Sold") {
                 const artworkJson =encodeURIComponent(JSON.stringify(artwork));
                 const smart=artwork
              
@@ -518,7 +518,7 @@ const userList=await fetchUserInfo()
         console.log(user.collections);
         console.log("all users collections can be seen below"+user.collections);
         user.collections.forEach(collection => {
-            if (collection.status !== "sold") {
+            if (collection.status !== "Sold") {
                 const collectionJson =encodeURIComponent(JSON.stringify(collection));
                 
                 const collectionHtml = `

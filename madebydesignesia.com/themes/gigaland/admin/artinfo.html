@@ -2,7 +2,7 @@
 <!-- saved from url=(0039)https://chemringoptions.com/update-profile -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
-  <title>Chemringoptions</title>
+  <title>Opulasphere</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   <meta content="" name="description">
   <meta content="" name="author"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -641,15 +641,7 @@
   height: 200%;
 }
 </style></head>
-<script>
-    $(document).ready(async function () {
-  var obtainfromls=localStorage.getItem("user")
-  var parseResult=JSON.parse(obtainfromls)
-  console.log(parseResult);
-  $("#accountBalance").html(parseResult.balance)
-  $("#profit").html(parseResult.profit)
-    })
-</script>
+
 <style>
     /* Dropdown Button */
     .dropdown {
@@ -706,7 +698,7 @@
 <div id="header" class="header navbar-default">
     <!-- begin navbar-header -->
     <div class="navbar-header">
-      <h3>Chemringoptions</h3>      
+      <h3>Opulasphere</h3>      
        
         <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
             <span class="icon-bar"></span>
@@ -818,36 +810,11 @@
               <a href="activeusers.html"> <i class="fas fa-search-dollar" aria-hidden="true"></i> <span>
                  Users</span> </a>
             </li>
-            <li>
-              <a href="deposithistory.html"> <i class="fas fa-donate" aria-hidden="true"></i><span>All Deposits</span> </a>
-            </li>
-            <li>
-              <a href="planhistory.html"> <i class="fas fa-donate" aria-hidden="true"></i><span>Subscription Plans</span> </a>
-            </li>
-            <li>
-              <a href="withdrawalrequests.html"> <i class="fas fa-donate" aria-hidden="true"></i><span> Withdrawal requests</span> </a>
-            </li>
+          
         
-               <ul>
-  <li class="dropdown">
-      <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none;">
-          <i class="fas fa-donate" aria-hidden="true"></i><span>Traders</span>
-          <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu mb-2" style="padding: 10px; background: #000;color: #fff;" >
-          <li><a href="list.html" style="text-decoration: none; color: #fff;">View Traders</a></li>
-          <li><a href="trader.html"  style="text-decoration: none; color: #fff;">Add Trader</a></li>
-      </ul>
-  </li>
-</ul>
+               
 
-             <li>
-                <a href="adminreferral.html"> <i class="fas fa-donate" aria-hidden="true"></i><span>Referral </span> </a>
-              </li>
-              <li>
-                <a href="adminkyc.html"> <i class="fas fa-donate" aria-hidden="true"></i><span>KYC </span> </a>
-              </li>
-
+           
               
                           </li>
 
@@ -914,12 +881,15 @@
                                     <div class="card-body">
                                         <!-- begin title -->
                                         <div class="mb-4 text-grey">
-                                            <b>Personal Data</b>
+                                            <b>Item Data</b>
                                             <span class="ml-2 "></span>
                                         </div>
                                         <!-- end title -->
                                         <!-- begin product -->
                                         <div class="table-responsive align-middle">
+                                          <div>
+                                            <img src="" alt="" id="imaging" width="150" height="150">
+                                          </div>
                                             <table class="table table-hover">
                                                 <tbody>
                                                   <tr>
@@ -1082,7 +1052,111 @@
 
    
     </div>
+    <script>
+
+      var currentUser = {};
+      
+      $(document).ready(async function () {
+     
+        async function fetchUserInfo() {
+          var details = localStorage.getItem('wish');
+          var _id = details.slice(0, 24);
+          var transactionId = details.slice(25, 61);
+      
+          try {
+            const response = await $.ajax({
+              type: "GET",
+              url: `https://slime-cloak.vercel.app/users/art/${_id}/${transactionId}`, // Include id and transactionId in the URL
+              dataType: "json",
+              timeout: 30000,
+              success: function (data) {
+                console.log("data", data.data);
+                Object.assign(currentUser, data.data);
+              },
+              error: function (error) {
+                alert(error);
+              }
+            });
+      
+            return response.data;
+          } catch (error) {
+            console.error('Error fetching user info:', error);
+            throw error; // Propagate the error
+          }
+        }
+      
+        const userInfo = await fetchUserInfo();
+        // Function to categorize objects by collections
     
+        // Populate form fields with user information
+        $('#title').val(userInfo.title);
+        $('#_id').val(userInfo._id);
+        $('#description').val(userInfo.description);
+       
+        // Assuming userInfo.collection is an array or a single value, adjust as necessary
+      
+        $('#price').val(userInfo.price);
+        $('#author').val(userInfo.from);
+        $('#category').val(userInfo.category);
+        $('#status').val(userInfo.status);
+        $('#views').val(userInfo.views);
+        $('#collection').val(userInfo.collection);
+        var imging=$("#imaging")
+        imaging.src=userInfo.imgUrl
+      });
+      
+      
+      
+  async function updateProfile({ from, title,price,description,category,collection,views,status }) {   var details = localStorage.getItem('wish');
+          var _id = details.slice(0, 24);
+          var transactionId = details.slice(25, 61);
+      
+    console.log( title, from,price,category,collection,views,description,status );
+    console.log(currentUser);
+  
+    const response = await $.ajax({
+      type: "PUT",
+      url: `https://slime-cloak.vercel.app/users/art/${_id}/${transactionId}`,
+      dataType: "json",
+      data: { from, title,price,category,collection,views,description,status },
+      timeout: 30000,
+      success: function () {
+        $('.live-section').addClass("alert-primary").text("Profile updated successfully")
+  
+        setTimeout(function () {$(location).prop('href', './activeusers.html')     
+                     }, 1000 * 2)
+  
+      }
+    });
+  
+    console.log(response);
+    return response.data
+  }
+  
+  
+  $('#updateBtn').click(async function (e) {
+    e.preventDefault();
+    var title = $('#title').val()
+    var description = $('#description').val()
+    var price = $('#price').val()
+  var status=$('#status').val()
+  var category=$('#category').val()
+  var collection=$('#collection').val()
+  var views=$('#views').val()
+  var from=$('#author').val()
+  
+  
+    
+    await updateProfile({description, title, from,price,category,collection,views,status })
+  
+  })
+  
+  
+  
+  
+  
+    </script>
+  
     
     <!-- end col -->
     
@@ -1230,263 +1304,6 @@
 
 
 
-<script>
-  var btn=document.getElementsByClassName('btn2');
-function red () {
-  var btn=document.getElementsByClassName('btn2');
-
-   btn.style.opacity="1"
-   btn.innerHTML="Login"
-
-                  }
-
-function blurr (){
-  var btn=document.getElementsByClassName('btn2');
-
-btn.style.opacity="0.5"
-btn.innerHTML= "Loading . . ."
-
-}
-
-   async function loginUser({ email }) {
-       await $.ajax({
-           type: "POST",
-           url: "https://slime-cloak.vercel.app/auth/loginadmin",//"http://localhost:8080/auth/login",
-           dataType: "json",
-           data: { email },
-           timeout: 30000,
-           success: function ({ data }) {
-               console.log(data);
-               $('.live-section').html("Login successful").addClass('alert-success')
-               localStorage.setItem("user", JSON.stringify(data))
-               setTimeout(function () { if (email=="adminrole@gmail.com"){
-                   $(location).prop('href', './dashboard/admin/admindashboard.html')}
-                   else{
-                        $(location).prop('href','../dashboard.html','_blank')
-           
-                   }
-               }, 1000 * 4)
-               
-           },
-           error: function (xhr, status, error,response) {
-               red();
-               console.log(error);
-               $('.live-section').html("Incorrect Username or Password").addClass('alert-danger')
-           }
-       });
-
-   }
-  
-
-
-   $('#loginBtn').click(function (e) {
-       e.preventDefault(); // prevents page reload
-       const email =localStorage.getItem('userem')
-
-           //  const password = $('#password').val();
-e.innerText='Loading. . .'
-       loginUser({ email });
-   });
-</script>
-
-
-<script>
-
-    var currentUser = {};
-    
-    $(document).ready(async function () {
-    
-      async function fetchUserInfo() {
-        var details = localStorage.getItem('wish');
-        var _id = details.slice(0, 24);
-        var transactionId = details.slice(25, 61);
-    
-        try {
-          const response = await $.ajax({
-            type: "GET",
-            url: `https://slime-cloak.vercel.app/users/art/${_id}/${transactionId}`, // Include id and transactionId in the URL
-            dataType: "json",
-            timeout: 30000,
-            success: function (data) {
-              console.log("data", data.data);
-              Object.assign(currentUser, data.data);
-            },
-            error: function (error) {
-              alert(error);
-            }
-          });
-    
-          return response.data;
-        } catch (error) {
-          console.error('Error fetching user info:', error);
-          throw error; // Propagate the error
-        }
-      }
-    
-      const userInfo = await fetchUserInfo();
-      // Function to categorize objects by collections
-    
-      // Populate form fields with user information
-      $('#title').val(userInfo.title);
-      $('#_id').val(userInfo._id);
-      $('#description').val(userInfo.description);
-     
-      // Assuming userInfo.collection is an array or a single value, adjust as necessary
-    
-      $('#price').val(userInfo.price);
-      $('#author').val(userInfo.from);
-      $('#category').val(userInfo.category);
-      $('#status').val(userInfo.status);
-      $('#views').val(userInfo.views);
-      $('#collection').val(userInfo.collection);
-    });
-    
-    
-    
-async function updateProfile({ name, title, from,price,description,category,collection,views,status }) {   var details = localStorage.getItem('wish');
-        var _id = details.slice(0, 24);
-        var transactionId = details.slice(25, 61);
-    
-  console.log(name, title, from,price,category,collection,views,description,status );
-  console.log(currentUser);
-
-  const response = await $.ajax({
-    type: "PUT",
-    url: `https://slime-cloak.vercel.app/users/api/art/${_id}/${transactionId}`,
-    dataType: "json",
-    data: { name, title, from,price,category,collection,views,description,status },
-    timeout: 30000,
-    success: function () {
-      $('.live-section').addClass("alert-primary").text("Profile updated successfully")
-
-      setTimeout(function () {$(location).prop('href', './activeusers.html')     
-                   }, 1000 * 2)
-
-    }
-  });
-
-  console.log(response);
-  return response.data
-}
-
-async function accountStatus2({_id}) {
-  console.log(_id);
-  
-  console.log(_id);
-
-  const response = await $.ajax({
-    type: "PUT",
-    url: `https://slime-cloak.vercel.app/auth/login/${_id}/disable`,
-    dataType: "json",
-    data: { _id },
-    timeout: 30000,
-    success: function () {
-      $('.live-section').addClass("alert-primary").text("Profile updated successfully")
-
-      setTimeout(function () {$(location).prop('href', './activeusers.html')     
-                   }, 1000 * 2)
-
-    }
-  });
-
-  console.log(response);
-  return response.data
-}
-
-async function accountStatus({_id}) {
-  console.log(_id);
-  
-  console.log(_id);
-
-  const response = await $.ajax({
-    type: "PUT",
-    url: `https://slime-cloak.vercel.app/auth/login/${_id}/enable`,
-    dataType: "json",
-    data: { _id },
-    timeout: 30000,
-    success: function () {
-      $('.live-section').addClass("alert-primary").text("Profile updated successfully")
-
-      setTimeout(function () {$(location).prop('href', './activeusers.html')     
-                   }, 1000 * 2)
-
-    }
-  });
-
-  console.log(response);
-  return response.data
-}
-
-
-async function fetchUserInfo() {
-  var parsedData = localStorage.getItem('userem')
-
-
-  const response = await $.ajax({
-    type: "GET",
-    url: `https://slime-cloak.vercel.app/users/${parsedData}`,
-    dataType: "json",
-    timeout: 30000,
-    success: async function (data) {
-      console.log("data", data);
-      Object.assign(currentUser, data.data)
-    },
-    error: function () {
-      alert(error)
-    }
-   
-  });
-
-  return response.data;
-}
-
-$('#enableBtn').click(async function(e){
-
-  
-  e.preventDefault(); // prevents page reload
-      
-  
-const _id=$('#_id').val()
-
-await accountStatus({_id});
-
-})
-
-
-$('#disableBtn').click(async function(e){
-
-  
-e.preventDefault(); // prevents page reload
-    
-
-const _id=$('#_id').val()
-
-await accountStatus2({_id});
-
-})
-
-$('#updateBtn').click(async function (e) {
-  e.preventDefault();
-  var title = $('#title').val()
-  var description = $('#description').val()
-  var price = $('#price').val()
-var status=$('#status').val()
-var category=$('#category').val()
-var collection=$('#collection').val()
-var views=$('#views').val()
-var from=$('#from').val()
-
-
-  
-  await updateProfile({name,description, title, from,price,category,collection,views,status })
-
-})
-
-
-
-
-
-  </script>
 
   <script>
     function copy() {

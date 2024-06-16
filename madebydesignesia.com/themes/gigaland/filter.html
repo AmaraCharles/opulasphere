@@ -400,7 +400,7 @@
             
             // console.log("all users artworks can be seen below"+user.artWorks);
             user.artWorks.forEach(artwork => {
-                if (artwork.status !== "sold" && artwork.collection==chosenCollection) {
+                if (artwork.status !== "Sold" && artwork.collection==chosenCollection) {
                     const artworkJson =encodeURIComponent(JSON.stringify(artwork));
                     const smart=artwork
                  

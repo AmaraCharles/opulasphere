@@ -388,7 +388,7 @@ if (img) {
             
              console.log("all users artworks can be seen below"+user.artWorks);
              user.artWorks.forEach(artwork => {
-                 if (artwork.status !== "sold" && artwork.category==chosenCategory) {
+                 if (artwork.status !== "Sold" && artwork.category==chosenCategory) {
                      const artworkJson =encodeURIComponent(JSON.stringify(artwork));
                      const smart=artwork
                   
@@ -442,7 +442,7 @@ if (img) {
              console.log("all users collections can be seen below"+user.collections);
             
              user.collections.forEach(collection => {
-                 if (collection.status != "sold" && collection.collection==chosenCollection) {
+                 if (collection.status != "Sold" && collection.category==chosenCollection) {
                      findCollectionName=collection[0]
                      alert(findCollectionName)
                     collectionName.innerHTML=findCollectionName;
