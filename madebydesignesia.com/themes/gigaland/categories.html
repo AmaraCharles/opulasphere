@@ -38,10 +38,7 @@
                                 <div class="de-flex-col">
                                     <!-- logo begin -->
                                     <div id="logo">
-                                        <a href="index.html">
-                                            <img alt="" class="logo" src="images/logo-light" />
-                                            <img alt="" class="logo-2" src="images/logo.png" />
-                                        </a>
+                                         <a href="index.html"><img src="images/icon.png" alt="" width="50" height="50"><span ><b style="font-size: 20px;">Opulasphere</b></span></a>
                                     </div>
                                     <!-- logo close -->
                                 </div>
@@ -444,7 +441,7 @@ if (img) {
              user.collections.forEach(collection => {
                  if (collection.status != "Sold" && collection.category==chosenCollection) {
                      findCollectionName=collection[0]
-                     alert(findCollectionName)
+                    //  alert(findCollectionName)
                     collectionName.innerHTML=findCollectionName;
                      const collectionHtml = `
                          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">

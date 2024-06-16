@@ -35,9 +35,7 @@
                                 <div class="de-flex-col">
                                     <!-- logo begin -->
                                     <div id="logo">
-                                        <a href="index.html">
-                                            <img alt="" src="images/logo.png" />
-                                        </a>
+                                        <a href="index.html"><img src="images/icon.png" alt="" width="50" height="50"><span ><b style="font-size: 20px;">Opulasphere</b></span></a>
                                     </div>
                                     <!-- logo close -->
                                 </div>
@@ -531,10 +529,7 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
 
             
            userInfo.artWorks.forEach(artwork => {
-            if (collection==null || "undefined"){
-        alert("no collection")
-    }
-   else{
+           
                 const artworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
@@ -562,13 +557,10 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                     </div>
                 `;
                 $('#artworksContainer').append(artworkHtml);}
-            });
+            );
        
 userInfo.collections.forEach(collection => {
-    if (collection==null || "undefined"){
-        alert("no collection")
-    }
-         else{       const collectionHtml = `
+           const collectionHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
                             
@@ -585,7 +577,7 @@ userInfo.collections.forEach(collection => {
                                     <span></span>
                                 </div>
                                 <div class="nft__item_price">
-                                <h4 style="color:#8364e2"> ${collection.price}  ETH</h4>
+                                <h4 style="color:#8364e2"> ${collection.price +"ETH" } </h4>
                                 </div>
                                 <div class="nft__item_price">
                                     ${collection.collection}<span></span>
@@ -601,7 +593,7 @@ userInfo.collections.forEach(collection => {
                     </div>
                 `;
                 $('#collectionContainer').append(collectionHtml);}
-            });
+            );
 
 
 
