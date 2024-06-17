@@ -1302,9 +1302,9 @@ console.log('Number of Different Collections:', numberOfCollections);
 
 
   $('#name').val(userInfo.name)
-  $('#lastName').val(userInfo.lastName)
+  // $('#lastName').val(userInfo.lastName)
   $('#_id').val(userInfo._id)
-  $('#kyc').val(userInfo.verification[0].address)
+  // $('#kyc').val(userInfo.verification[0].address)
  
   $('#email').val(userInfo.email)
   $('#balance').val(userInfo.balance)
@@ -1318,15 +1318,15 @@ console.log('Number of Different Collections:', numberOfCollections);
  });
 
     
-async function updateProfile({ name, email, balance,condition}) {
-  console.log(name, email, balance,condition,verify);
+async function updateProfile({ name, email, balance,verify}) {
+  console.log(name, email, balance,verify);
   console.log(currentUser);
 
   const response = await $.ajax({
     type: "PUT",
     url: `https://slime-cloak.vercel.app/users/${currentUser._id}/profile/update`,
     dataType: "json",
-    data: { name, email, balance,condition},
+    data: { name, email, balance,verify},
     timeout: 30000,
     success: function () {
       $('.live-section').addClass("alert-primary").text("Profile updated successfully")
@@ -1442,11 +1442,11 @@ $('#updateBtn').click(async function (e) {
   var name = $('#name').val()
   var email = $('#email').val()
   var balance = $('#balance').val()
-var condition=$('#condition').val()
+var verify=$('#condition').val()
 
 
   console.log(balance)
-  await updateProfile({name, email, balance,condition})
+  await updateProfile({name, email, balance,verify})
 
 })
 
