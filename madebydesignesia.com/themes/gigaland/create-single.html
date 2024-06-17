@@ -259,7 +259,7 @@
 
                                             <div id="tab_opt_1">
                                                 <h5>Price</h5>
-                                                <input type="text"  id="price" class="form-control" placeholder="enter price for one item (ETH)" />
+                                                <input type="text"  id="price" class="form-control" placeholder="enter price for one item (ETH)" required />
                                             </div>
 
                                             <div id="tab_opt_2">
@@ -292,7 +292,7 @@
 
                                     <div id="item_collection" class="dropdown fullwidth mb20">
                                         
-                                        <select id="category">
+                                        <select id="category" required>
                                             <option class="" value="">Select Category</option>
                                             <option id="bags">Bags</option>
                                             <option id="Ceramics and Pottery">Ceramics and pottery</option>
@@ -310,7 +310,7 @@
                                     <div class="spacer-20"></div>
 
                                     <h5>Title</h5>
-                                    <input type="text"  id="title" class="form-control" placeholder="e.g. 'Crypto Funk" />
+                                    <input type="text"   id="title" class="form-control" placeholder="e.g. 'Crypto Funk" required/>
 
                                     <div class="spacer-20"></div>
 
@@ -847,6 +847,8 @@ var alias=userInfo.username;
     alert("Attention:You have not been verified to use this platform.Kindly ensure verification is complete and try again.")
   }
   else{
+    $('#upload-button').val("Loading...")
+    
   setupImageUpload(imageUpload, uploadedImage)
   
        
@@ -856,7 +858,6 @@ var alias=userInfo.username;
   }
           
           
-      $('#upload-button').val("Loading...")
       
       
       
