@@ -330,9 +330,9 @@
                    localStorage.setItem("users",response.data)
                    return response.data
                  }
-                 function hail(artworkJson){ 
-                     const artwork = decodeURIComponent(artworkJson);
-                         localStorage.setItem("pricing",artwork)
+                 function hail(object){ 
+                     const selected = decodeURIComponent(object);
+                         localStorage.setItem("pricing",selected)
                          location.href="buy.html"
                          }
      
@@ -424,7 +424,7 @@ if (img) {
               <i class="fa fa-eye"></i><span> ${artwork.views}</span>
             </div>
           </div>
-          <a  class="hailed_button" onclick='hail("${artworkJson}")'>Buy Now</a>
+         
         </div>
       </div>
     `;
@@ -447,7 +447,7 @@ if (img) {
             
              user.collections.forEach(collection => {
                  if (collection.status != "Sold" && collection.category==chosenCollection) {
-                     
+                    const collectionJson = encodeURIComponent(JSON.stringify(collection));
                     //  alert(findCollectionName)
                     collectionName.innerHTML=chosenCollection;
                      const collectionHtml = `
@@ -477,7 +477,7 @@ if (img) {
                                      <div class="nft__item_like">
                                          <i class="fa fa-eye"></i><span> ${collection.views}</span>
                                      </div>
-                                     <button  class="btn btn-primary">Buy Now</button>
+                                     <a  class="hailed_button" onclick='hail("${collectionJson}")'>Buy Now</a>
                                  </div>
                              </div>
                          </div>
