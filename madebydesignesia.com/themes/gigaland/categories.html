@@ -168,8 +168,12 @@
                                 <div class="de_tab_content">
                                     
                                     <div class="tab-1">
+                                        <div id="image-container">
+                                            <p>Loading...</p>
+                                          </div>
                                         <div class="row">
                                                <div id="artworksContainer"></div>   
+                                               <div id="collectionContainer"></div>
                                         </div>
                                     </div>
                                     
@@ -334,6 +338,7 @@
      
      
              $(document).ready(async function () {
+                
                // Retrieve the category from localStorage
 const cat = localStorage.getItem("categoriesLink");
 
@@ -349,7 +354,7 @@ if (img) {
         console.log("Image source set to sculpture.png");
     } 
     
-    else if (cat === "Art") {
+    else if (cat === "Artworks") {
         // Set the image source to "sculpture.png"
         img.src = "art.png";
         console.log("Image source set to art.png");
@@ -384,54 +389,56 @@ if (img) {
             
             
              console.log("all users artworks can be seen below"+user.artWorks);
-             user.artWorks.forEach(artwork => {
-                 if (artwork.status !== "Sold" && artwork.category==chosenCategory) {
-                     const artworkJson =encodeURIComponent(JSON.stringify(artwork));
-                     const smart=artwork
-                  
-                     const artworkHtml = `
-                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                             <div class="nft__item">
-                                 <div class="author_list_pp">
-                                     <a href="author.html">
-                                         <img class="lazy" src="images/author/author-1.jpg" alt="" style="max-width: 100%; height: auto;">
-                                         <i class="fa fa-check"></i>
-                                     </a>
-                                 </div>
-                                 <div class="nft__item_wrap">
-                                     <a href="item-details.html">
-                                         <img src="${artwork.imgUrl}" class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
-                                     </a>
-                                 </div>
-                                 <div class="nft__item_info">
-                                     <a href="item-details.html">
-                                         <h4>${artwork.title}</h4>
-                                     </a>
-                                     <div class="nft__item_click">
-                                         <span></span>
-                                     </div>
-                                     <div class="nft__item_price">
-                                         ${artwork.price} ETH<span></span>
-                                     </div>
-                                     <div class="nft__item_like">
-                                         <i class="fas fa-eye"></i><span>50</span>
-                                     </div>
-                                 </div>
-                                 <a  class=""  onclick='hail("${artworkJson}")'>Buy Now</a>
-                             </div>
-                         </div>
-                     `;
-                     $('#artworksContainer').append(artworkHtml);
-                 }
-     
-             });
-         });
+          user.artWorks.forEach(artwork => {
+            const container = $('#image-container');
+    container.empty(); // Clear the loading message
+
+  if (artwork.status !== "Sold" && artwork.category === chosenCategory) {
+    const artworkJson = encodeURIComponent(JSON.stringify(artwork));
+    
+    const artworkHtml = `
+      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="nft__item">
+          <div class="author_list_pp">
+            <a href="author.html">
+              <img class="lazy" src="images/author/author-1.jpg" alt="" style="max-width: 100%; height: auto;">
+              <i class="fa fa-check"></i>
+            </a>
+          </div>
+          <div class="nft__item_wrap">
+            <a href="item-details.html">
+              <img src="${artwork.imgUrl}" class="lazy nft__item_preview" alt="Image loading..." onerror="this.onerror=null; this.src='path/to/placeholder-image.jpg';" style="max-width: 100%; height: auto;">
+            </a>
+          </div>
+          <div class="nft__item_info">
+            <a href="item-details.html">
+              <h4>${artwork.title}</h4>
+            </a>
+            <div class="nft__item_click">
+              <span></span>
+            </div>
+            <div class="nft__item_price">
+              ${artwork.price} ETH<span></span>
+            </div>
+            <div class="nft__item_like">
+              <i class="fa fa-eye"></i><span> ${artwork.views}</span>
+            </div>
+          </div>
+          <a  class="hailed_button" onclick='hail("${artworkJson}")'>Buy Now</a>
+        </div>
+      </div>
+    `;
+
+    $('#artworksContainer').append(artworkHtml);
+  }
+});
+         })
      
        
 
        
          var findCollectionName="";
-             var collectionName=document.getElementById("collectionName")
+             var collectionName=document.getElementById("categoryName")
 
          userList.forEach(user => {
              console.log(user.collections);
@@ -440,9 +447,9 @@ if (img) {
             
              user.collections.forEach(collection => {
                  if (collection.status != "Sold" && collection.category==chosenCollection) {
-                     findCollectionName=collection[0]
+                     
                     //  alert(findCollectionName)
-                    collectionName.innerHTML=findCollectionName;
+                    collectionName.innerHTML=chosenCollection;
                      const collectionHtml = `
                          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                              <div class="nft__item">
@@ -454,7 +461,7 @@ if (img) {
                                  </div>
                                  <div class="nft__item_wrap">
                                      <a href="item-details.html">
-                                         <img src="${collection.imgUrl}" class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
+                                         <img src="${collection.imgUrl}" class="lazy nft__item_preview" alt="Image loading..." onerror="this.onerror=null; this.src='path/to/placeholder-image.jpg';" style="max-width: 100%; height: auto;">
                                      </a>
                                  </div>
                                  <div class="nft__item_info">
@@ -468,14 +475,14 @@ if (img) {
                                          ${collection.price} ETH<span></span>
                                      </div>
                                      <div class="nft__item_like">
-                                         <i class="fas fa-eye"></i><span>50</span>
+                                         <i class="fa fa-eye"></i><span> ${collection.views}</span>
                                      </div>
                                      <button  class="btn btn-primary">Buy Now</button>
                                  </div>
                              </div>
                          </div>
                      `;
-                     $('#artworksContainer').append(collectionHtml);
+                     $('#collectionContainer').append(collectionHtml);
                  }
              });
          });

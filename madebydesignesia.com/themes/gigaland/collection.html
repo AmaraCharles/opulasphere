@@ -34,10 +34,7 @@
                                 <div class="de-flex-col">
                                     <!-- logo begin -->
                                     <div id="logo">
-                                        <a href="index.html">
-                                            <img alt="" class="logo" src="images/logo-light.png" />
-                                            <img alt="" class="logo-2" src="images/logo.png" />
-                                        </a>
+                                         <a href="index.html"><img src="images/icon.png" alt="" width="50" height="50"><span ><b style="font-size: 20px;">Opulasphere</b></span></a>
                                     </div>
                                     <!-- logo close -->
                                 </div>
@@ -143,7 +140,7 @@
                                                 Collections on Sale                                                
                                                 <div class="clearfix"></div>
                                                 <!-- <span id="wallet" class="profile_wallet">0x973b8ee1d6d46ec5de3f9f8452d127e541e3e9c2</span> -->
-                                                <button id="btn_copy" title="Copy Text">Copy</button>
+                                                
                                             </h4>
                                         </div>
                                     </div>
@@ -279,9 +276,12 @@
                         <div class="col-md-12">
                             <div class="de-flex">
                                 <div class="de-flex-col">
-                                    <a href="index.html">
-                                        <img alt="" class="f-logo" src="images/logo.png" /><span class="copy">&copy; Copyright 2023 - Opulasphere.com</span>
-                                    </a>
+                                    
+                                         <a href="index.html"><img src="images/icon.png" alt="" width="40" height="50"><span ><b style="font-size: 20px;">Opulasphere</b></span> <span> &copy; Copyright 2023 - Opulasphere.com
+                                         </span>
+                                        
+                                        </a>
+                                    
                                 </div>
                                 <div class="de-flex-col">
                                     <div class="social-icons">
@@ -373,7 +373,7 @@
                              ${artwork.price} ETH<span></span>
                          </div>
                          <div class="nft__item_like">
-                             <i class="fas fa-eye"></i><span>50</span>
+                             <i class="fa fa-eye"></i><span>50</span>
                          </div>                            
                      </div>
                  </div>
@@ -415,7 +415,7 @@ userInfo.collections.forEach(collection => {
                              ${collection.description}<span></span>
                          </div>
                          <div class="nft__item_like">
-                             <i class="fas fa-eye"></i><span>50</span>
+                             <i class="fa fa-eye"></i><span>50</span>
                          </div>                            
                      </div>
                  </div>
@@ -479,7 +479,7 @@ const userList=await fetchUserInfo()
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="nft__item">
                             <div class="author_list_pp">
-                                <a href="author.html">
+                                <a href="">
                                     <img class="lazy" src="images/icon.png" alt="" style="max-width: 100%; height: auto;">
                                     <i class="fa fa-check"></i>
                                 </a>
@@ -500,7 +500,7 @@ const userList=await fetchUserInfo()
                                     ${artwork.price} ETH<span></span>
                                 </div>
                                 <div class="nft__item_like">
-                                    <i class="fas fa-eye"></i><span>${artwork.views}</span>
+                                    <i class="fa fa-eye"></i><span>${artwork.views}</span>
                                 </div>
                             </div>
                             <a  class="hailed_button" onclick='hail("${artworkJson}")'>Buy Now</a>
@@ -525,8 +525,8 @@ const userList=await fetchUserInfo()
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="nft__item">
                             <div class="author_list_pp">
-                                <a href="author.html">
-                                    <img class="lazy" src="images/author/author-1.jpg" alt="" style="max-width: 100%; height: auto;">
+                                <a href="">
+                                    <img class="lazy" src="images/icon.png" alt="" style="max-width: 100%; height: auto;">
                                     <i class="fa fa-check"></i>
                                 </a>
                             </div>
@@ -546,7 +546,7 @@ const userList=await fetchUserInfo()
                                     ${collection.price} ETH<span></span>
                                 </div>
                                 <div class="nft__item_like">
-                                    <i class="fas fa-eye"></i><span>${collection.views}</span>
+                                    <i class="fa fa-eye"></i><span>${collection.views}</span>
                                 </div>
                                 <a  class="hailed_button"  onclick='hail2("${collectionJson}")'>Buy Now</a>
                             </div>
