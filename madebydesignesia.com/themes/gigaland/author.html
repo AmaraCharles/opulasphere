@@ -179,8 +179,8 @@
                                             </div>
                                             <div class="spacer-10"></div>
                                             <div class="d-balance">
-                                                <h4>Balance</h4>
-                                               <span id="balance"></span>
+                                                <!-- <h4>Balance</h4>
+                                               <span id="balance"></span> --> 
                                             </div>
                                             <div class="spacer-10"></div>
                                             <div class="d-wallet">
@@ -293,7 +293,7 @@
                       <div class="spacer-single"></div>
                       <div class="de-flex">
                         <div>Your balance</div>
-                        <div><b id="balance"> </b> USD</div>
+                        <div><b id="balance2"> </b> USD</div>
                     </div>
                     <div class="spacer-5"></div>
                     <div class="de-flex">
@@ -551,7 +551,8 @@ authorImg.src=randomizedBanner[0];
 var alias=userInfo.username;
   $("#alias").html(alias);
                $("#name").html(userInfo.name);
-               $("#balance").html("$"+userInfo.balance);
+            //    $("#balance").html("$"+userInfo.balance);
+               $("#balanceFull").html("$"+userInfo.balance);
                let sold = 0;
                let colsold=0;
                let views=0;
