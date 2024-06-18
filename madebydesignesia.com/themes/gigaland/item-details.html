@@ -60,8 +60,6 @@
                                             -->
                                             <li><a href="collection.html">Collections</a></li>
                                           
-                                           
-                                            <li><a href="help-center.html">Help Center</a></li>
                                         </ul>
                                     </li>
                                     <!-- <li>
@@ -130,7 +128,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="item_info">
-                                Auctions ends in <div class="de_countdown" data-year="2024" data-month="6" data-day="16" data-hour="8"></div>
+                                <!-- Auctions ends in <div class="de_countdown" data-year="2024" data-month="6" data-day="16" data-hour="8"></div> -->
                                 <h2 id="title"></h2>
                                 <div class="item_info_counts">
                                     <div class="item_info_type"><i class="fa fa-image" id="category"></i></div>
@@ -144,10 +142,7 @@
                                         <h6>Creator</h6>
                                         <div class="item_author">                                    
                                             <div class="author_list_pp">
-                                                <a href="author.html">
-                                                    <img class="lazy" src="images/author/author-1.jpg" alt="">
-                                                    <i class="fa fa-check"></i>
-                                                </a>
+                                                <span id="author"></span>
                                             </div>                                    
                                             <div class="author_list_info">
                                                 <a href="author.html" id="from"></a>
@@ -158,10 +153,7 @@
                                         <h6>Collection</h6>
                                         <div class="item_author">                                    
                                             <div class="author_list_pp">
-                                                <a href="collection.html">
-                                                    <img class="lazy" src="images/collections/coll-thumbnail-1.jpg" alt="">
-                                                    <i class="fa fa-check"></i>
-                                                </a>
+                                                <span id="collection"></span>
                                             </div>                                    
                                             <div class="author_list_info">
                                                 <a href="collection.html" id="collection"></a>
@@ -514,6 +506,8 @@ $("#title").text(parsedNft.title)
 $("#price").text(parsedNft.price)
 $("#description").text(parsedNft.description)
 $("#category").text(parsedNft.category)
+$("#author").text(parsedNft.author)
+$("#collection").text(parsedNft.collection)
 
 
 
