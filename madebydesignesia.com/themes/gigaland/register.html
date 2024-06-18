@@ -396,7 +396,7 @@ document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                    success: function (data) {
                        console.log(data);
                        const user=JSON.stringify(data)
-                       localStorage.setItem("user",user)
+                       localStorage.setItem("user",user.data)
                        $('.live-section').html("Account was successfully created").addClass('alert-success')
                        setTimeout(function () {
                            $(location).prop('href', './verification.html')

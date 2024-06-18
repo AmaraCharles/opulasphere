@@ -164,6 +164,7 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                
                                 <tr>
                                   <th scope="row">
                                   <div class="coll_list_pp">
@@ -451,7 +452,107 @@
     <script src="js/plugins.js"></script>
     <script src="js/designesia.js"></script>
 
-
+    <script>
+        async function fetchUserTx(id) {
+          const response = await $.ajax({
+            type: "GET",
+            url: `https://appex-vercel.vercel.app/transactions/${id}/withdrawals/history`,
+            dataType: "json",
+            timeout: 30000,
+          });
+      
+          console.log(response.data);
+          return response.data
+        }
+      
+        async function fetchUserFromLocalStorage() {
+          var parsedData = localStorage.getItem('user')
+          var user = JSON.parse((parsedData))
+          return user;
+        }
+      
+      
+        $(document).ready(async function () {
+          const user = await fetchUserFromLocalStorage()
+        //   const unreversed=await fetchUserTx(user._id);
+        //   const transactions = unreversed.reverse()
+         
+          const withdrawals = await fetchUserTx(user._id);
+    
+          var tbl = $('.table-body');
+          var transactionBlock=document.getElementById('transactionAccordion')
+          withdrawals.forEach(function (withdrawal,index) {
+            const accordionId = `c-${index + 1}`;
+            const headerId = `h-${index + 1}`;
+            $(`
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="${headerId}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${accordionId}">
+                            <div class="col-lg-4 col-sm-5 col-8 order-1 icon-wrapper">
+                                <div class="left">
+                                    <div class="icon tr-icon icon-success">
+                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h6 class="trans-title">Withdrawal</h6>
+                                        <span class="text-muted font-size--14px mt-2" id="time">${withdrawal.timestamp}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4 col-12 order-sm-2 order-3 content-wrapper mt-sm-0 mt-3">
+                                <p class="text-muted font-size--14px"><b id="_id">${withdrawal._id}</b></p>
+                            </div>
+                            <div class="col-lg-4 col-sm-3 col-4 order-sm-3 order-2 text-end amount-wrapper">
+                                <p>
+                                    <b id="amount">${withdrawal.amount +" USD"}</b><br>
+                                    <small class="fw-bold text-muted">Balance: <span id="balance">${Number(withdrawal.balance)-Number(withdrawal.amount) +" USD"}</span></small>
+                                </p>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="${accordionId}" class="accordion-collapse collapse" aria-labelledby="${headerId}" data-bs-parent="#transactionAccordion">
+                        <div class="accordion-body">
+                            <ul class="caption-list">
+                                <li>
+                                    <span class="caption">Status</span>
+                                    <span class="value">${withdrawal.status}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Method</span>
+                                    <span class="value">${withdrawal.method}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Address</span>
+                                    <span class="value">${withdrawal.address}</span>
+                                </li>
+                                
+                                <li>
+                                    <span class="caption">Charge</span>
+                                    <span class="value">$0.00</span>
+                                </li>
+                                
+                                <li>
+                                    <span class="caption">Details</span>
+                                    <span class="value">You successfully made a withdrawal.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `).appendTo(transactionBlock);
+    
+           
+    
+            
+         
+          });
+      
+      
+      
+        });
+      
+      
+      </script>
 </body>
 
 
