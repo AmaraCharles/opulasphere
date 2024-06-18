@@ -9230,12 +9230,7 @@
               <a href="./activeusers.html"> <i class="fas fa-search-dollar" aria-hidden="true"></i> <span>
                   Users</span> </a>
               </li>
-                  <li>
-                    <a href="deposithistory.html"> <i class="fas fa-donate" aria-hidden="true"></i><span>All Deposits</span> </a>
-                  </li>
-              
-
-            <li>
+                 
               <a href="withdrawalrequests.html"> <i class="fas fa-donate" aria-hidden="true"></i><span>Withdrawal
                   Requests</span> </a>
             </li>
@@ -9508,8 +9503,7 @@
 
     
     $(document).ready(async function () {
-        
-      
+       
        const users = await fetchUser();
     
        
@@ -9518,7 +9512,7 @@
 var td=$('<td>');
      users.map(function (user) {
         const withdrawalreq=user.withdrawals;
-      
+      console.log(withdrawalreq)
     
         withdrawalreq.map(function(request){
           const details=[user._id,request._id]
