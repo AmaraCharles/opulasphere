@@ -573,10 +573,13 @@ authorImg.src=randomizedBanner[0];
             //    $("#views").html(userInfo.collections[0].views);
              
 var alias=userInfo.username;
+var bal=userInfo.balance
   $("#alias").html(alias);
                $("#name").html(userInfo.name);
             //    $("#balance").html("$"+userInfo.balance);
                $("#balanceFull").html("$"+userInfo.balance);
+               $("#balance2").html("$"+ bal);
+             
                let sold = 0;
                let colsold=0;
                let views=0;
@@ -763,9 +766,9 @@ userInfo.collections.forEach(collection => {
                     var getIt=localStorage.getItem("user")
                     var userInfo=JSON.parse(getIt)
                           var { _id, from } =userInfo;
-                var _id=userInfo.data._id
-                var from=userInfo.data.firstName + " " + userInfo.data.lastName
-                var balance=userInfo.data.balance
+             var from=userInfo.name;
+                
+                var balance=userInfo.balance
                       console.log(balance)
                       if(Number(balance)<amount){
                 
