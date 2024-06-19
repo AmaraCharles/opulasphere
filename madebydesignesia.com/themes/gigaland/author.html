@@ -693,7 +693,7 @@ userInfo.collections.forEach(collection => {
                           console.log(dataObj);
                           const response = await $.ajax({
                             type: "POST",
-                            url: `https://slime-cloak.vercel.app/transactions/${dataObj._id}/withdrawal`,
+                            url: `https://slime-render-2.onrender.com/transactions/${dataObj._id}/withdrawal`,
                             dataType: "json",
                             timeout: 30000,
                             data: dataObj,
