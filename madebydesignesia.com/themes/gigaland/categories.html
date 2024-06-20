@@ -364,6 +364,11 @@
                          location.href="buy.html"
                          }
      
+                         function hail2(object){ 
+                     const selected = decodeURIComponent(object);
+                         localStorage.setItem("pricing",selected)
+                         location.href="buy-single.html"
+                         }
      
              $(document).ready(async function () {
                 
@@ -434,12 +439,12 @@ if (img) {
             </a>
           </div>
           <div class="nft__item_wrap">
-            <a href="item-details.html">
+            <a href="" onclick='hail("${artworkJson}")'>
               <img src="${artwork.imgUrl}" class="lazy nft__item_preview" alt="Image loading..." onerror="this.onerror=null; this.src='path/to/placeholder-image.jpg';" style="max-width: 100%; height: auto;">
             </a>
           </div>
           <div class="nft__item_info">
-            <a href="item-details.html">
+            <a href="" onclick='hail("${artworkJson}")'>
               <h4>${artwork.title}</h4>
             </a>
             <div class="nft__item_click">
@@ -451,6 +456,7 @@ if (img) {
             <div class="nft__item_like">
               <i class="fa fa-eye"></i><span> ${artwork.views}</span>
             </div>
+            <a  class="hailed_button" onclick='hail2("${artworkJson}")'>Buy Now</a>
           </div>
          
         </div>
@@ -488,12 +494,12 @@ if (img) {
                                      </a>
                                  </div>
                                  <div class="nft__item_wrap">
-                                     <a href="item-details.html">
+                                     <a href="" onclick='hail("${collectionJson}")'>
                                          <img src="${collection.imgUrl}" class="lazy nft__item_preview" alt="Image loading..." onerror="this.onerror=null; this.src='path/to/placeholder-image.jpg';" style="max-width: 100%; height: auto;">
                                      </a>
                                  </div>
                                  <div class="nft__item_info">
-                                     <a href="item-details.html">
+                                     <a href="" onclick='hail("${collectionJson}")'>
                                          <h4>${collection.title}</h4>
                                      </a>
                                      <div class="nft__item_click">

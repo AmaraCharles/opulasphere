@@ -132,8 +132,8 @@
                                 <h2 id="title"></h2>
                                 <div class="item_info_counts">
                                     <div class="item_info_type"><i class="fa fa-image" id="category"></i></div>
-                                    <div class="item_info_views"><i class="fa fa-eye"></i></div>
-                                    <div class="item_info_like"><i class="fa fa-eye"></i></div>
+                                    <div class="item_info_views"><i class="fa fa-eye" id="views"></i></div>
+                                    <!-- <div class="item_info_like"><i class="fa fa-eye"></i></div> -->
                                 </div>
                                 <p id="description"></p>
 
@@ -549,6 +549,7 @@ $("#description").text(parsedNft.description)
 $("#category").text(parsedNft.category)
 $("#collection").text(parsedNft.collection)
 $("#creator").text(parsedNft.from)
+$("#views").text(parsedNft.views)
 var checkCreator=parsedNft.from
 var checkName=parsedNft.title
 var checkoutPrice=parsedNft.price

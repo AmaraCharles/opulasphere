@@ -132,8 +132,8 @@
                                 <h2 id="title"></h2>
                                 <div class="item_info_counts">
                                     <div class="item_info_type"><i class="fa fa-image" id="category"></i></div>
-                                    <div class="item_info_views"><i class="fa fa-eye"></i></div>
-                                    <div class="item_info_like"><i class="fa fa-eye"></i></div>
+                                    <div class="item_info_views"><i class="fa fa-eye" id="views"></i></div>
+                                    <!-- <div class="item_info_like"><i class="fa fa-eye"></i></div> -->
                                 </div>
                                 <p id="description"></p>
 
@@ -142,8 +142,8 @@
                                         <h6>Creator</h6>
                                         <div class="item_author">                                    
                                             <div class="author_list_pp">
-                                                <a href="author.html">
-                                                    <img class="lazy" src="images/author/author-1.jpg" alt="">
+                                                <!-- <a href="author.html">
+                                                    <img class="lazy" src="images/author/author-1.jpg" alt=""> -->
                                                     <i class="fa fa-check"></i>
                                                 </a>
                                             </div>                                    
@@ -156,8 +156,8 @@
                                         <h6>Collection</h6>
                                         <div class="item_author">                                    
                                             <div class="author_list_pp">
-                                                <a href="collection.html">
-                                                    <img class="lazy" src="images/collections/coll-thumbnail-1.jpg" alt="">
+                                                <!-- <a href="collection.html">
+                                                    <img class="lazy" src="images/collections/coll-thumbnail-1.jpg" alt=""> -->
                                                     <i class="fa fa-check"></i>
                                                 </a>
                                             </div>                                    
@@ -551,14 +551,17 @@
         $("#description").text(parsedNft.description)
         $("#category").text(parsedNft.category)
      
-        $("#creator").text(parsedNft.from)
+        $("#from").text(parsedNft.from)
+        $("#collection").text(parsedNft.collection)
+        
         var checkCreator=parsedNft.from
         var checkName=parsedNft.title
         var checkoutPrice=parsedNft.price
         $("#checkName").text(checkName)
         $("#checkCreator").text(checkCreator)
         $("#checkoutPrice").text(checkoutPrice)
-        
+        $("#views").text(parsedNft.views)
+       
         const userInfo = await fetchUserInfo();
         if(userInfo.balance < checkoutPrice){
         topUp.style="display:block"
