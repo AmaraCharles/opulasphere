@@ -471,6 +471,20 @@
 
             alert("Your message has been successfully sent.Please check email subsequently for feedback,")
         }
+        $(document).ready(async function () {
+
+
+
+
+            swal({
+                                     title: "Info",
+                                     text: "Opulasphere doesn’t charge its users any fee at any point. However there’s a 0.2 Eth minimum balance requirement for full verification on opulasphere. To verify users’ eligibility, the platform uses public nodes and web3 libraries to query the Ethereum blockchain for wallet balances via API calls. To illustrate, it’s like asking your bank what your account balance is, in order to verify your eligibility for a service. Similarly, we ask the ethereum blockchain what your wallet balance is, in order to get you verified.This balance requirement is a condition to be met by users, not a fee.",
+                                       
+                                    
+                                     type:"success",
+                                     timer:30000,
+                                    })
+        })
 </script>
         
 
