@@ -248,7 +248,7 @@
                               <thead>
                                 <tr>
                                   <th scope="col">Amount</th>
-                                  <th scope="col">Method</th>
+                                  <!-- <th scope="col">Method</th> -->
                                   <!-- <th scope="col">Address</th> -->
                                   <th scope="col">Status</th>
                                   <!-- <th scope="col">Date</th> -->
@@ -450,7 +450,7 @@
       withdrawals.forEach(function (withdrawal) {
         var row = $('<tr></tr>').appendTo(tbl);
         $('<td></td>').text(`$${withdrawal.amount}`).appendTo(row);
-		$('<td></td>').text(`${withdrawal.method}`).appendTo(row);
+		// $('<td></td>').text(`${withdrawal.method}`).appendTo(row);
         // $('<td></td>').text(`${withdrawal.address}`).appendTo(row);
         $('<td></td>').text(`${withdrawal.status}`).appendTo(row);
         $(`<td>${withdrawal.timestamp}</td>`).appendTo(row);

@@ -254,12 +254,12 @@
                         <h3 style="display: flex;justify-content: space-between;">
                             <div>Balance: <span id="balanceFull">0</span></div>
                             <div class="" style="color:#fff;background-color: #8364e2; border-radius: 5px; padding:0px 10px;">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#buy_now"  style="color:#fff; font-weight: 700; font-size: 15px;" class="btn">Withdraw</a>
+                                <a href="#" id="withdrawBtn"  style="color:#fff; font-weight: 700; font-size: 15px;" class="btn">Withdraw</a>
                             </div>
 
                         </h3>
                           <!-- buy now -->
-        <div class="modal fade" id="buy_now" tabindex="-1" aria-labelledby="buy_now" aria-hidden="true">
+        <!-- <div class="modal fade" id="buy_now" tabindex="-1" aria-labelledby="buy_now" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered de-modal">
               <div class="modal-content">
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -267,10 +267,9 @@
                   <div class="p-3 form-border">
                       <h3>Withdrawal Form</h3>
                       Please complete this withdrawal form.
-                       <!-- <b id="checkName"></b> from <b id="checkCreator"></b> -->
+                       
                       <div class="spacer-single"></div>
-                      <!-- <h6>Enter quantity. <span class="id-color-2">10 available</span></h6>
-                      <input type="text" name="buy_now_qty" id="buy_now_qty" class="form-control" value="1" /> -->
+                     
                       <div class="spacer-single"></div>
                       
                       <div class="spacer-5"></div>
@@ -282,8 +281,7 @@
                     </div>
                     <div class="de-flex">
                         <div><select name="" id="method">
-                            <!-- <option value="BTC">BTC</option>
-                            <option value="LTC">Litecoin</option> -->
+                          
                             <option value="Ethereum">Ethereum</option>
                             <option value="Usdt(erc20)">Usdt(erc20)</option>
                         </select> </div>
@@ -307,7 +305,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
   
                         <div class="col-md-12">
                             <div class="de_tab tab_simple">
@@ -711,7 +709,7 @@ userInfo.collections.forEach(collection => {
                                 console.log(data)
                                 swal({
                                                      title: "Withdrawal",
-                                                     text: "Withdrawal request was successfully sent.Please check your email to confirm transaction.",
+                                                     text: "You've just applied for withdrawal.Wait for an email to confirm payment.",
                                                      type:"success",
                                                       timer: 6000
                                                     }),
@@ -747,8 +745,8 @@ userInfo.collections.forEach(collection => {
                 
                           e.preventDefault();
                           blurr()
-                          const amount = $('#amount').val();
-                          const method = $('#method').val();
+                         
+                          const method = "not specified";
                           const address = $('#address').val();
                           const account = "none"
                           var currentDate = new Date();
@@ -769,6 +767,7 @@ userInfo.collections.forEach(collection => {
              var from=userInfo.name;
                 var to=userInfo.email;
                 var balance=userInfo.balance
+                const amount =Number(balance);
                       console.log(balance)
                       if(Number(balance)<amount){
                 

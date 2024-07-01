@@ -867,10 +867,10 @@ var alias=userInfo.username;
       var parsename=JSON.parse(name)
       var firstName=name.firstName;
        
-  if(parsename.verify=="pending"){
-    alert("Attention:You have not been verified to use this platform.Kindly ensure verification is complete and try again.")
-  }
-  else{
+//   if(parsename.verify=="pending"){
+//     alert("Attention:You have not been verified to use this platform.Kindly ensure verification is complete and try again.")
+//   }
+//   else{
     $('#upload-button').val("Loading...")
     
   setupImageUpload(imageUpload, uploadedImage)
@@ -879,7 +879,7 @@ var alias=userInfo.username;
        
         release({firstName})
       
-  }
+  
           
           
       
