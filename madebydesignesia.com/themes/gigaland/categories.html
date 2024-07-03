@@ -428,7 +428,10 @@ if (img) {
 
   if (artwork.status !== "Sold" && artwork.category === chosenCategory) {
     const artworkJson = encodeURIComponent(JSON.stringify(artwork));
-    
+    if(artwork.status=="unlisted"){
+            console.log(artwork.title+ "not listed yet");
+        }
+        else{
     const artworkHtml = `
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
         <div class="nft__item">
@@ -463,7 +466,7 @@ if (img) {
       </div>
     `;
 
-    $('#artworksContainer').append(artworkHtml);
+    $('#artworksContainer').append(artworkHtml);}
   }
 });
          })
@@ -484,6 +487,10 @@ if (img) {
                     const collectionJson = encodeURIComponent(JSON.stringify(collection));
                     //  alert(findCollectionName)
                     collectionName.innerHTML=chosenCollection;
+                    if(collection.status=="unlisted"){
+            console.log(collection.title+ "not listed yet");
+        }
+        else{
                      const collectionHtml = `
                          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                              <div class="nft__item">
@@ -517,6 +524,7 @@ if (img) {
                          </div>
                      `;
                      $('#collectionContainer').append(collectionHtml);
+                        }
                  }
              });
          });

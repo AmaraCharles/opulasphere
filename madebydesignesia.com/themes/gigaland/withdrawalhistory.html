@@ -443,7 +443,7 @@
 
     $(document).ready(async function () {
       const user = await fetchUserFromLocalStorage()
-      const withdrawals = await fetchUserTx(user.data._id);
+      const withdrawals = await fetchUserTx(user._id);
 
       var tbl = $('.withtable-body');
 

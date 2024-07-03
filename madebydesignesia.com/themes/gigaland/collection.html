@@ -372,6 +372,10 @@
      
     userInfo.artWorks.forEach(artwork => {
         console.log("logged in users single artworks can be seen below"+artwork);
+        if(artwork.status=="unlisted"){
+            console.log(artwork.title+ "not listed yet");
+        }
+        else{
          const myArtworkHtml = `
          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                  <div class="nft__item" >
@@ -404,10 +408,15 @@
              </div>
          `;
          $('#myArtworksContainer').append(myArtworkHtml);
+            }
      });
 
 userInfo.collections.forEach(collection => {
     console.log("logged in user collection is here"+collection);
+    if(collection.status=="unlisted"){
+            console.log(collection.title+ "not listed yet");
+        }
+        else{
          const myCollectionHtml = `
          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                  <div class="nft__item" >
@@ -446,6 +455,7 @@ userInfo.collections.forEach(collection => {
              </div>
          `;
          $('#myCollectionContainer').append(myCollectionHtml);
+            }
      });
 
 

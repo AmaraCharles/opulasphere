@@ -183,7 +183,7 @@
                                             <div class="spacer-10"></div>
                                             <div class="d-wallet">
                                                 <h4>My Wallet</h4>
-                                                <span id="wallet" class="d-wallet-address"></span>
+                                                <span id="wallet" class="d-wallet-address">0x973b8ee1d6d46ec5de3f9f8452d127e541e3e9c2</span>
                                                 <button id="btn_copy" title="Copy Text">Copy</button>
                                             </div>
 
@@ -231,12 +231,13 @@
                                             <h4 id="name">
                                                   
                                                 <span class="profile_username" id="username"></span>
-                                                <span id="wallet" class="profile_wallet"></span>
-                                                <!-- <button id="btn_copy" title="Copy Text">Copy</button> -->
+                                                
                                             </h4>
-                                          
-                                        </div>
+                                           </div>
                                     </div>
+                                    <span id="wallet"class="profile_wallet">0x973b8ee1d6d46ec5de3f9f8452d127e541e3e9c2</span>
+                                    <button id="btn_copy" title="Copy Text">Copy</button>
+                                
                                 </div>
                                 <div class="spacer-10"></div>
                                 <div class="profile_follow de-flex">
@@ -252,28 +253,24 @@
                         </div>
                         <div class="spacer-5"></div>
                         <h3 style="display: flex;justify-content: space-between;">
-                            <div>Balance: <span id="balanceFull">0</span></div>
+                            <div>Balance: <span id="balanceFull">0</span><span style="font-size:10px">ETH</span> </div>
                             <div class="" style="color:#fff;background-color: #8364e2; border-radius: 5px; padding:0px 10px;">
                                 <a href="#" id="withdrawBtn"  style="color:#fff; font-weight: 700; font-size: 15px;" class="btn">Withdraw</a>
                             </div>
 
                         </h3>
                           <!-- buy now -->
-        <!-- <div class="modal fade" id="buy_now" tabindex="-1" aria-labelledby="buy_now" aria-hidden="true">
+        <div class="modal fade" id="buy_now" tabindex="-1" aria-labelledby="buy_now" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered de-modal">
               <div class="modal-content">
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body">
                   <div class="p-3 form-border">
-                      <h3>Withdrawal Form</h3>
-                      Please complete this withdrawal form.
+                      <h3>List Now</h3>
+                      <!-- Please complete this withdrawal form. -->
                        
-                      <div class="spacer-single"></div>
-                     
-                      <div class="spacer-single"></div>
-                      
-                      <div class="spacer-5"></div>
-                      <div class="de-flex">
+                    
+                      <!-- <div class="de-flex">
                           <input type="text" class="" id="address" placeholder="Enter wallet address">
                       </div>
                       <div class="de-flex">
@@ -286,26 +283,26 @@
                             <option value="Usdt(erc20)">Usdt(erc20)</option>
                         </select> </div>
                     </div>
-                      <div class="spacer-single"></div>
+                      <div class="spacer-single"></div> -->
                       <div class="de-flex">
                         <div>Your balance</div>
-                        <div><b id="balance2"> </b> USD</div>
+                        <div><b id="balance2"> </b> ETH</div>
                     </div>
                     <div class="spacer-5"></div>
                     <div class="de-flex">
                         <div>Service fee 0%</div>
-                        <div><b>0.00 USD</b></div>
+                        <div><b>0.005 ETH</b></div>
                     </div>
                     <div class="spacer-5"></div>
-                      <a href="" target="_blank" id="withdrawBtn" class=" btn-main btn-fullwidth" >Withdraw</a>
+                      <a href="" target="_blank" id="listBtn" class=" btn-main btn-fullwidth" >Proceed</a>
                       <div class="spacer-5"></div>
 
-                      <a href="withdrawalhistory.html"><i class="fa fa-arrow-left"></i> View History</a>
+                      <!-- <a href="withdrawalhistory.html"><i class="fa fa-arrow-left"></i> View History</a> -->
                   </div>
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
   
                         <div class="col-md-12">
                             <div class="de_tab tab_simple">
@@ -313,7 +310,8 @@
                                 <ul class="de_nav">
                                     <li class="active"><span>Singles <i class="fa fa-eye" id="singview"></i></span></li>
                                     <li><span>Collections <i class="fa fa-eye" id="colview"></i></span></li>
-                                    
+                                    <li class="mt-1"><span >Unlisted <i class="fa fa-eye-slash" id="colview"></i> </span></li>
+                                   
                                     <!-- <li><span>Liked</span></li> -->
                                 </ul>
                                 
@@ -335,7 +333,7 @@
 
                                     <div class="tab-3">
                                         <div class="row">
-                                        
+                                            <div id="unlistedContainer" class="row"></div>
                                 </div>
                                 
                             </div>
@@ -428,7 +426,7 @@
                 </div>
             </div>
             
-  <div class="modal fade" id="buy_now" tabindex="-1" aria-labelledby="buy_now" aria-hidden="true">
+  <div class="modal fade" id="buy_now" tabindex="-1" aria-labelledby="uy_now" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered de-modal">
                   <div class="modal-content">
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -515,6 +513,18 @@
 
 
 <script>
+    function listing(object){ 
+                     const selected = decodeURIComponent(object);
+                         localStorage.setItem("lisitingItem",selected)
+                      
+                         }
+                         function take(object){
+                            const yours = decodeURIComponent(object);
+        localStorage.setItem("yours",yours)
+        location.href("art.html")
+    }
+
+
   function comp(){
 
             alert("Your message has been successfully sent.Please check email subsequently for feedback,")
@@ -522,8 +532,159 @@
 </script>
    
        <script>
+        async function updateProfile() {   
+            
+            var details = localStorage.getItem('user');
+            var user=JSON.parse(details)
+          var _id =user._id
+          var gif=localStorage.getItem("lisitingItem")
+       var tif=JSON.parse(gif)
+          var transactionId =tif._id
+          var title=tif.title;
+          var timestamp=tif.timestamp;
+          var from=tif.from;
+          var price=tif.price;
+          var imgUrl=tif.imgUrl;
+          var description=tif.description;
+          var category=tif.category
+          var status="listed"
+        
+          let sampleData = {
+    from,
+    imgUrl,
+    title,
+    price,
+    category,
+    description,
+    status,
+    timestamp
+};
+
+// Conditionally add views and collection properties if they exist
+if (tif.hasOwnProperty('views')) {
+    sampleData.views = tif.views;
+}
+
+if (tif.hasOwnProperty('collection')) {
+    sampleData.collection = tif.collection;
+}
+    console.log(sampleData);
+  
+    const response = await $.ajax({
+      type: "PUT",
+      url: `https://slime-cloak.vercel.app/users/art/${_id}/${transactionId}`,
+      dataType: "json",
+      data:sampleData,
+      timeout: 30000,
+      success: function () {
+        // $('.live-section').addClass("alert-primary").text("Profile updated successfully")
+  
+        console.log("listed successfully");
+        swal({
+                                      title: "Success",
+                                    text: "Listed Successfully!",
+                                    type:"success",
+                                     timer: 3000
+                                   }),
+              
+        setTimeout(function () {$(location).prop('href', './author.html')     
+                     }, 1000 * 3)
+  
+      }
+    });
+  
+    console.log(response);
+    return response.data
+  }
+  
+   async function subFnc(dataObj) {
+         
+         await $.ajax({
+           type: "POST",
+           url: `https://slime-render-2.onrender.com/transactions/${dataObj.userId}/auto`,
+           dataType: "json",
+           data: { ...dataObj },
+           timeout: 30000,
+           success: function (data) {
+             localStorage.removeItem("ct")
+        
+               console.log(data)
+                                       setTimeout(async function(){
+                                           updateProfile() }, 1000);
+                                   },
+           error:  function (error) {
+               
+                                       alert('Error Submiting Payment Data');
+                                       console.log(error);
+                                       red()
+                                   }
+           // function (xhr, status, error) {
+           //   console.log(error);
+           //   $('.live-section').html("").addClass('alert-danger')
+           // }
+       });
+     
+   }
+
+   function red(){
+    $("#listBtn").html("List")
+   }
+   $("#listBtn").click(async function(event){
+    event.preventDefault();
+    $("#listBtn").html("listing. . .")
+     var copysubamount=0.005
+     var copysubnamee="nothing"
+     var copysubname="nothing"
+    
+     var copyminimumDep=0.004
+     
+     localStorage.setItem("copysubname",copysubname)
+     localStorage.setItem("copysubamount",copysubamount)
+     
+     var copysubname=localStorage.getItem("copysubname")
+     var copysubamount=localStorage.getItem("copysubamount")
+     
+     
+     var getUser=localStorage.getItem("user")
+     const user=JSON.parse(getUser)
+     const userId = user._id;
+     const from=user.name;
+     const to=user.email;
+     var timestamp=new Date()
+     var balance=user.balance;
+     if (Number(copysubamount) >Number( balance)){
+         swal({
+                                    title: "Insufficient Balance",
+                                    text: "You do not have enough balance for this plan.Please top up balance and try again.",
+                                    type:"danger",
+                                     timer: 3000
+                                   })
+     
+     
+     }
+     else if (Number(copysubamount) < Number(copyminimumDep)){
+         swal({
+                                    title: "Invalid  amount",
+                                    text: "Invalid  amount",
+                                    type:"danger",
+                                     timer: 3000
+                                   })
+     
+     
+     }
+     
+     else(
+       
+       await subFnc({userId,copysubamount,copysubname,from,to,timestamp})
+
+       
+     )
+       
+     
+       
    
-   
+  
+   })
            async function fetchUserInfo() {
                var parsedData = localStorage.getItem('user')
                var userFromLS = JSON.parse((parsedData))
@@ -575,8 +736,10 @@ var bal=userInfo.balance
   $("#alias").html(alias);
                $("#name").html(userInfo.name);
             //    $("#balance").html("$"+userInfo.balance);
-               $("#balanceFull").html("$"+userInfo.balance);
-               $("#balance2").html("$"+ bal);
+            $("#balanceFull").html(Number(userInfo.balance).toFixed(2));
+$("#balance2").html(Number(bal).toFixed(2));
+
+
              
                let sold = 0;
                let colsold=0;
@@ -608,12 +771,19 @@ userInfo.collections.forEach(collection=>{
 $("#colview").html(colview);
 $("#singview").html(singview);
 
+function take(object){ 
+                     const selected = decodeURIComponent(object);
+                         localStorage.setItem("yours",selected)
+                         location.href="art.html"
+                         }
 
+                         
+     
 $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
 
             
            userInfo.artWorks.forEach(artwork => {
-           
+           if (artwork.status !="unlisted"){
                 const artworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
@@ -641,20 +811,60 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                     </div>
                 `;
                 $('#artworksContainer').append(artworkHtml);}
+                if (artwork.status=="unlisted"){
+                const artworkHtml = `
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                        <div class="nft__item" >
+                            
+                            <div class="nft__item_wrap">
+                                <a href="" onclick='take("${artworkJson}")'>
+                                    <img src=${artwork.imgUrl} class="lazy " alt="broken image" style="max-width: 100%; height: auto;">
+                                </a>
+                            </div>
+                            <div class="nft__item_info" style="text-align:left">
+                                <a href="" onclick='take("${artworkJson}")'>
+                                    <h3>${artwork.title}</h3>
+                                </a>
+                                <div class="nft__item_click">
+                                    <span></span>
+                                </div>
+                                <div class="nft__item_price">
+                                <h4 style="color:#8364e2"> ${artwork.price +"ETH" } </h4>
+                                </div>
+                                <div class="nft__item_price">
+                                    ${artwork.collection}<span></span>
+                                </div>
+                                <div class="nft__item_price">
+                                    ${artwork.description}<span></span>
+                                </div>
+                                <a href="#" class="btn-main btn-lg" data-bs-toggle="modal" data-bs-target="#buy_now" onclick='listing("${artworkJson}")'>
+                                  List
+                                </a>                     
+                            </div>
+                        </div>
+                    </div>
+                `;
+            
+                $('#unlistedContainer').append(artworkHtml)
+            }}
             );
        
 userInfo.collections.forEach(collection => {
+
+
+const collectionJson = encodeURIComponent(JSON.stringify(collection));
+    if(collection.status !="unlisted" ){
            const collectionHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
                             
                             <div class="nft__item_wrap">
-                                <a href="item-details.html">
-                                    <img src=${collection.imgUrl} class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
+                                <a href="" onclick='take("${collectionJson}")'>
+                                    <img src=${collection.imgUrl} class="lazy " alt="broken image" style="max-width: 100%; height: auto;">
                                 </a>
                             </div>
                             <div class="nft__item_info" style="text-align:left">
-                                <a href="item-details.html">
+                                <a href="" onclick='take("${collectionJson}")'>
                                     <h3>${collection.title}</h3>
                                 </a>
                                 <div class="nft__item_click">
@@ -676,7 +886,45 @@ userInfo.collections.forEach(collection => {
                         </div>
                     </div>
                 `;
-                $('#collectionContainer').append(collectionHtml);}
+                $('#collectionContainer').append(collectionHtml)};
+            if (collection.status=="unlisted"){
+                const collectionHtml = `
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+                        <div class="nft__item" >
+                            
+                            <div class="nft__item_wrap">
+                                <a href="" onclick='take("${collectionJson}")'>
+                                    <img src=${collection.imgUrl} class="lazy " alt="broken image" style="max-width: 100%; height: auto;">
+                                </a>
+                            </div>
+                            <div class="nft__item_info" style="text-align:left">
+                                <a href="" onclick='take("${collectionJson}")'>
+                                    <h3>${collection.title}</h3>
+                                </a>
+                                <div class="nft__item_click">
+                                    <span></span>
+                                </div>
+                                <div class="nft__item_price">
+                                <h4 style="color:#8364e2"> ${collection.price +"ETH" } </h4>
+                                </div>
+                                <div class="nft__item_price">
+                                    ${collection.collection}<span></span>
+                                </div>
+                                <div class="nft__item_price">
+                                    ${collection.description}<span></span>
+                                </div>
+                                <a href="#" class="btn-main btn-lg" data-bs-toggle="modal" data-bs-target="#buy_now" onclick='listing("${collectionJson}")'>
+                                  List
+                                </a>                     
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $('#unlistedContainer').append(collectionHtml)
+
+            }
+            
+            }
             );
 
 
@@ -699,11 +947,6 @@ userInfo.collections.forEach(collection => {
                             timeout: 30000,
                             data: dataObj,
                      success:
-                    //   function () {
-                    //   went();
-                    //           $('.live-section').show().addClass("alert-primary").text("withdrawal request successful")
-                    //           location.href='withhistory.html'
-                    //         }
                     
                     function (data) {
                                 console.log(data)
@@ -747,7 +990,7 @@ userInfo.collections.forEach(collection => {
                           blurr()
                          
                           const method = "not specified";
-                          const address = $('#address').val();
+                          const address = "NONE";
                           const account = "none"
                           var currentDate = new Date();
                         // Get individual date and time components
@@ -767,7 +1010,7 @@ userInfo.collections.forEach(collection => {
              var from=userInfo.name;
                 var to=userInfo.email;
                 var balance=userInfo.balance
-                const amount =Number(balance);
+                const amount =Number(balance).toFixed(3);
                       console.log(balance)
                       if(Number(balance)<amount){
                 

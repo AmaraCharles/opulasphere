@@ -184,7 +184,7 @@
                                             <div class="spacer-10"></div>
                                             <div class="d-wallet">
                                                 <h4>My Wallet</h4>
-                                                <span id="wallet" class="d-wallet-address"></span>
+                                                <span id="wallet" class="d-wallet-address">0x973b8ee1d6d46ec5de3f9f8452d127e541e3e9c2</span>
                                                 <button id="btn_copy" title="Copy Text">Copy</button>
                                             </div>
 
@@ -750,40 +750,7 @@
 var alias=userInfo.username;
   $("#alias").html(alias);
   $("#balance").html('$'+userInfo.balance);
-      const kyc=userInfo.kyc;
     
-      if (kyc == "verified") {
-      $('.approved').css("display", "block");
-      $('.strongWrapper').css("display", "none");
-      localStorage.removeItem("kycStatus")
-      } else if (kyc == "unverified") {
-      $('.strongWrapper').css("display", "block");
-      $('.approved').css("display", "none");
-      }
-      else if (kyc == "Verified") {
-      $('.approved').css("display", "block");
-      $('.strongWrapper').css("display", "none");
-      localStorage.removeItem("kycStatus")
-      }
-      
-      else if (kyc == "Unverified") {
-      $('.strongWrapper').css("display", "block");
-      $('.approved').css("display", "none");
-      
-      }
-      
-      var kycStatus=localStorage.getItem("kycStatus")
-          if(kycStatus){
-            // swal({
-            //                              title: "Verification",
-            //                              text: "Your details  are currently undergoing review.",
-            //                              type:"success",
-            //                               timer: 60000
-            //                             })
-                                        $('.strongWrapper').css("display", "none");
-      $('.approved').css("display", "none");
-      
-          }
         })
       
         $(document).ready( function () {
