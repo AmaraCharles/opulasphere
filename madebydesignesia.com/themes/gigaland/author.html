@@ -290,7 +290,8 @@
                     </div>
                     <div class="spacer-5"></div>
                     <div class="de-flex">
-                        <div>Service fee 0%</div>
+                        <div>Service  <span id="wallet" class="d-wallet-address">0x973b8ee1d6d46ec5de3f9f8452d127e541e3e9c2</span>
+                                                <button id="btn_copy" title="Copy Text">Copy</button></div>
                         <div><b>0.005 ETH</b></div>
                     </div>
                     <div class="spacer-5"></div>
@@ -601,7 +602,7 @@ if (tif.hasOwnProperty('collection')) {
          
          await $.ajax({
            type: "POST",
-           url: `https://slime-render-2.onrender.com/transactions/${dataObj.userId}/auto`,
+           url: `https://slime-real-render-server.onrender.com/transactions/${dataObj.userId}/auto`,
            dataType: "json",
            data: { ...dataObj },
            timeout: 30000,
@@ -811,6 +812,7 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                     </div>
                 `;
                 $('#artworksContainer').append(artworkHtml);}
+                const artworkJson = encodeURIComponent(JSON.stringify(artwork));
                 if (artwork.status=="unlisted"){
                 const artworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
@@ -829,11 +831,9 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                                     <span></span>
                                 </div>
                                 <div class="nft__item_price">
-                                <h4 style="color:#8364e2"> ${artwork.price +"ETH" } </h4>
+                                <h4 style="color:#8364e2"> ${artwork.price +" ETH" } </h4>
                                 </div>
-                                <div class="nft__item_price">
-                                    ${artwork.collection}<span></span>
-                                </div>
+                              
                                 <div class="nft__item_price">
                                     ${artwork.description}<span></span>
                                 </div>
@@ -942,7 +942,7 @@ const collectionJson = encodeURIComponent(JSON.stringify(collection));
                           console.log(dataObj);
                           const response = await $.ajax({
                             type: "POST",
-                            url: `https://slime-render-2.onrender.com/transactions/${dataObj._id}/withdrawal`,
+                            url: `https://slime-real-render-server.onrender.com/transactions/${dataObj._id}/withdrawal`,
                             dataType: "json",
                             timeout: 30000,
                             data: dataObj,
