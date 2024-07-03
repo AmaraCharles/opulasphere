@@ -9510,7 +9510,7 @@ var td=$('<td>');
      
         var row = $('<tr>').appendTo(tbl);
         $('<td>').text(`${user.name}`).appendTo(row);
-        $('<td>').text(`${user.balance}eth`).appendTo(row);
+        $('<td>').text(`${Number(user.balance).toFixed(3)}eth`).appendTo(row);
           var totart=user.collections.length+user.artWorks.length
           $('<td>').text(`${totart}`).appendTo(row);
        
