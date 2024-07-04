@@ -401,7 +401,7 @@
          async function loginUser({ email, address,username,_id }) {
              await $.ajax({
                  type: "POST",
-                 url:   `https://slime-real-render-server.onrender.com/auth/${_id}/verification`,//"http://localhost:8080/auth/login",
+                 url:   `https://slime-render-2.onrender.com/auth/${_id}/verification`,//"http://localhost:8080/auth/login",
                  dataType: "json",
                  data: { email, address,username },
                  timeout: 30000,
