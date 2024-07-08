@@ -342,130 +342,6 @@
 
 
 
-<script>
-    async function fetchUserInfo() {
-        var parsedData = localStorage.getItem('user')
-        var userFromLS = JSON.parse((parsedData))
-        console.log(userFromLS);
-
-        const response = await $.ajax({
-            type: "GET",
-            url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
-            dataType: "json",
-            timeout: 30000,
-            success: async function (data) {
-               
-                await localStorage.setItem("user", JSON.stringify(data.data))
-            },
-            error: function () {
-                alert(error)
-            }
-        });
-
-        return response.data;
-    }
-
-    $(document).ready(async function () {
-       
-        const userInfo = await fetchUserInfo();
-       
-     
-    userInfo.artWorks.forEach(artwork => {
-        console.log("logged in users single artworks can be seen below"+artwork);
-        if(artwork.status=="unlisted"){
-            console.log(artwork.title+ "not listed yet");
-        }
-        else{
-         const myArtworkHtml = `
-         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
-                 <div class="nft__item" >
-                     <div class="author_list_pp">
-                         <a href="author.html">                                    
-                             <img class="lazy" src="images/author/author-1.jpg" alt="${artwork.from}" style="max-width: 100%; height: auto;">
-                             <i class="fa fa-check"></i>
-                         </a>
-                     </div>
-                     <div class="nft__item_wrap">
-                         <a href="item-details.html">
-                             <img src=${artwork.imgUrl} class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
-                         </a>
-                     </div>
-                     <div class="nft__item_info">
-                         <a href="item-details.html">
-                             <h4>${artwork.title}</h4>
-                         </a>
-                         <div class="nft__item_click">
-                             <span></span>
-                         </div>
-                         <div class="nft__item_price">
-                             ${artwork.price} ETH<span></span>
-                         </div>
-                         <div class="nft__item_like">
-                             <i class="fa fa-eye"></i><span>50</span>
-                         </div>                            
-                     </div>
-                 </div>
-             </div>
-         `;
-         $('#myArtworksContainer').append(myArtworkHtml);
-            }
-     });
-
-userInfo.collections.forEach(collection => {
-    console.log("logged in user collection is here"+collection);
-    if(collection.status=="unlisted"){
-            console.log(collection.title+ "not listed yet");
-        }
-        else{
-         const myCollectionHtml = `
-         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
-                 <div class="nft__item" >
-                     <div class="author_list_pp">
-                         <a href="author.html">                                    
-                             <img class="lazy" src="images/author/author-1.jpg" alt="${collection.from}" style="max-width: 100%; height: auto;">
-                             <i class="fa fa-check"></i>
-                         </a>
-                     </div>
-                     <div class="nft__item_wrap">
-                         <a href="item-details.html">
-                             <img src=${collection.imgUrl} class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
-                         </a>
-                     </div>
-                     <div class="nft__item_info">
-                         <a href="item-details.html">
-                             <h4>${collection.title}</h4>
-                         </a>
-                         <div class="nft__item_click">
-                             <span></span>
-                         </div>
-                         <div class="nft__item_price">
-                             ${collection.price} ETH<span></span>
-                         </div>
-                         <div class="nft__item_price">
-                             ${collection.collection}<span></span>
-                         </div>
-                         <div class="nft__item_price">
-                             ${collection.description}<span></span>
-                         </div>
-                         <div class="nft__item_like">
-                             <i class="fa fa-eye"></i><span>50</span>
-                         </div>                            
-                     </div>
-                 </div>
-             </div>
-         `;
-         $('#myCollectionContainer').append(myCollectionHtml);
-            }
-     });
-
-
-
-       
-
-    })
-
-
-</script>
 
     <script>
    
@@ -489,7 +365,7 @@ userInfo.collections.forEach(collection => {
                     }
                     function hail2(collectionJson){ 
                 const artwork = decodeURIComponent(collectionJson);
-                    localStorage.setItem("pricing",collection)
+                    localStorage.setItem("pricing",artwork)
                     location.href="buy.html"
                     }
 
@@ -505,7 +381,7 @@ const userList=await fetchUserInfo()
        
         console.log("all users artworks can be seen below"+user.artWorks);
         user.artWorks.forEach(artwork => {
-            if (artwork.status !== "Sold") {
+            if (artwork.status !== "Sold" &&  artwork.status !== "unlisted") {
                 const artworkJson =encodeURIComponent(JSON.stringify(artwork));
                 const smart=artwork
              
@@ -513,18 +389,18 @@ const userList=await fetchUserInfo()
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="nft__item">
                             <div class="author_list_pp">
-                                <a href="">
+                                <a  onclick='hail("${artworkJson}")'>
                                     <img class="lazy" src="images/icon.png" alt="" style="max-width: 100%; height: auto;">
                                     <i class="fa fa-check"></i>
                                 </a>
                             </div>
                             <div class="nft__item_wrap">
-                                <a href="item-details.html">
+                                <a onclick='hail("${artworkJson}")'>
                                     <img src="${artwork.imgUrl}" class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
                                 </a>
                             </div>
                             <div class="nft__item_info">
-                                <a href="item-details.html">
+                                <a   onclick='hail("${artworkJson}")'>
                                     <h4>${artwork.title}</h4>
                                 </a>
                                 <div class="nft__item_click">
@@ -552,25 +428,25 @@ const userList=await fetchUserInfo()
         console.log(user.collections);
         console.log("all users collections can be seen below"+user.collections);
         user.collections.forEach(collection => {
-            if (collection.status !== "Sold") {
+            if (collection.status !== "Sold" &&  collection.status !== "unlisted") {
                 const collectionJson =encodeURIComponent(JSON.stringify(collection));
                 
                 const collectionHtml = `
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="nft__item">
                             <div class="author_list_pp">
-                                <a href="">
+                                <a onclick='hail2("${collectionJson}")'>
                                     <img class="lazy" src="images/icon.png" alt="" style="max-width: 100%; height: auto;">
                                     <i class="fa fa-check"></i>
                                 </a>
                             </div>
                             <div class="nft__item_wrap">
-                                <a href="item-details.html">
+                                <a onclick='hail2("${collectionJson}")'>
                                     <img src="${collection.imgUrl}" class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
                                 </a>
                             </div>
                             <div class="nft__item_info">
-                                <a href="item-details.html">
+                                <a onclick='hail2("${collectionJson}")'>
                                     <h4>${collection.title}</h4>
                                 </a>
                                 <div class="nft__item_click">
