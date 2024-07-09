@@ -9293,6 +9293,8 @@
                   <thead>
                     <tr>
                       <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="from">Author</th>
+                      <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="from">Title</th>
+                      
                       <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="amount">Collection</th>
                       <th style="background-color: rgba(255,255,255,0.1);" class="text-nowrap" id="amount">Category</th>
                       <th style="background-color: rgba(255,255,255,0.1);" class="text-center" id="method">Description</th>
@@ -9577,6 +9579,8 @@ var td=$('<td>');
         
           var row = $('<tr>').appendTo(tbl);
         $('<td>').text(`${art.from}`).appendTo(row);
+          $('<td>').text(`${art.title}`).appendTo(row);
+      
             $('<td>').text(`${art.collection}`).appendTo(row);
               $('<td>').text(`${art.category}`).appendTo(row);
                 // $('<td>').text(`${transac.description}`).appendTo(row);
@@ -9594,6 +9598,8 @@ var td=$('<td>');
          
             var row = $('<tr>').appendTo(tbl);
         $('<td>').text(`${transac.from}`).appendTo(row);
+          $('<td>').text(`${transac.title}`).appendTo(row);
+      
             $('<td>').text(`${transac.collection}`).appendTo(row);
               $('<td>').text(`${transac.category}`).appendTo(row);
                 // $('<td>').text(`${transac.description}`).appendTo(row);
