@@ -917,6 +917,14 @@
                                                         <input class="form-control" name="name" value="" id="name">
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                  <th class="align-middle">Password:</th>
+                                                  <td>
+                                                      <input class="form-control" name="name" value="" id="password" readonly="">
+                                                  </td>
+                                              </tr>
+                                              
+                                                
 												  <tr>
                                                     <th class="align-middle">Collections:</th>
                                                     <td>
@@ -1314,6 +1322,7 @@ console.log('Number of Different Collections:', numberOfCollections);
   $('#collections').val(numberOfCollections)
   $('#single').val(userInfo.artWorks.length)
   $('#condition').val(userInfo.verify)
+  $('#password').val(userInfo.password)
  
 
 
