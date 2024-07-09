@@ -814,7 +814,7 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                 $('#artworksContainer').append(artworkHtml);}
                 const artworkJson = encodeURIComponent(JSON.stringify(artwork));
                 if (artwork.status=="unlisted"){
-                const artworkHtml = `
+                const unartworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
                             
@@ -845,7 +845,7 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                     </div>
                 `;
             
-                $('#unlistedContainer').append(artworkHtml)
+                $('#unlistedContainer').append(unartworkHtml)
             }}
             );
        
@@ -888,7 +888,7 @@ const collectionJson = encodeURIComponent(JSON.stringify(collection));
                 `;
                 $('#collectionContainer').append(collectionHtml)};
             if (collection.status=="unlisted"){
-                const collectionHtml = `
+                const uncollectionHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
                             
@@ -920,7 +920,7 @@ const collectionJson = encodeURIComponent(JSON.stringify(collection));
                         </div>
                     </div>
                 `;
-                $('#unlistedContainer').append(collectionHtml)
+                $('#unlistedContainer').append(uncollectionHtml)
 
             }
             
