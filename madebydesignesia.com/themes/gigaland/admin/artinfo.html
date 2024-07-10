@@ -927,6 +927,12 @@
                                                         <input class="form-control" name="name" value="" id="description">
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                  <th class="align-middle">Image Link:</th>
+                                                  <td>
+                                                      <input class="form-control" name="name" value="" id="photo">
+                                                  </td>
+                                              </tr>
 												  <tr>
                                                     <th class="align-middle">Collection:</th>
                                                     <td>
@@ -1105,24 +1111,27 @@
         $('#status').val(userInfo.status);
         $('#views').val(userInfo.views);
         $('#collection').val(userInfo.collection);
+        var imginfo=userInfo.imgUrl
+        $('#photo').val(imginfo);
+       
         var imging=$("#imaging")
         imaging.src=userInfo.imgUrl
       });
       
       
       
-  async function updateProfile({ from, title,price,description,category,collection,views,status }) {   var details = localStorage.getItem('wish');
+  async function updateProfile({ from,imgUrl, title,price,description,category,collection,views,status }) {   var details = localStorage.getItem('wish');
           var _id = details.slice(0, 24);
           var transactionId = details.slice(25, 61);
       
-    console.log( title, from,price,category,collection,views,description,status );
+    console.log( title,imgUrl, from,price,category,collection,views,description,status );
     console.log(currentUser);
   
     const response = await $.ajax({
       type: "PUT",
       url: `https://slime-cloak.vercel.app/users/art/${_id}/${transactionId}`,
       dataType: "json",
-      data: { from, title,price,category,collection,views,description,status },
+      data: { from, title,price,imgUrl,category,collection,views,description,status },
       timeout: 30000,
       success: function () {
         $('.live-section').addClass("alert-primary").text("Profile updated successfully")
@@ -1148,7 +1157,8 @@
   var collection=$('#collection').val()
   var views=$('#views').val()
   var from=$('#author').val()
-  
+  var imgUrl=$('#photo').val()
+ 
   
     
     await updateProfile({description, title, from,price,category,collection,views,status })
