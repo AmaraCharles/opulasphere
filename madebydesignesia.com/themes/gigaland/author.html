@@ -514,11 +514,13 @@
 
 
 <script>
-    function listing(object){ 
-                     const selected = decodeURIComponent(object);
+   async  function listing(object){ 
+                     const selected = decodeURIComponent(object)
                          localStorage.setItem("lisitingItem",selected)
+                         console.log("stored to ls");
                       
                          }
+
                          function take(object){
                             const yours = decodeURIComponent(object);
         localStorage.setItem("yours",yours)
@@ -539,7 +541,7 @@
             var user=JSON.parse(details)
           var _id =user._id
           var gif=localStorage.getItem("lisitingItem")
-       var tif=JSON.parse(gif)
+       var tif=gif
           var transactionId =tif._id
           var title=tif.title;
           var timestamp=tif.timestamp;
@@ -660,6 +662,8 @@ if (tif.hasOwnProperty('collection')) {
                                     type:"danger",
                                      timer: 3000
                                    })
+                                   $("#listBtn").html("List")
+    
      
      
      }
@@ -812,7 +816,7 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                     </div>
                 `;
                 $('#artworksContainer').append(artworkHtml);}
-                const artworkJson = encodeURIComponent(JSON.stringify(artwork));
+                const artworkJson = encodeURIComponent(artwork);
                 if (artwork.status=="unlisted"){
                 const unartworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
