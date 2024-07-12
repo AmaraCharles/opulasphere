@@ -519,7 +519,7 @@
         try {
         const decoded = decodeURIComponent(object);
         const parsedObject = JSON.parse(decoded); // Parsing JSON to ensure it's a valid object
-        localStorage.setItem("listingItem", JSON.stringify(parsedObject)); // Store as string
+        localStorage.setItem("lisitingItem", JSON.stringify(parsedObject)); // Store as string
         console.log("stored to ls", parsedObject);
     } catch (error) {
         console.error("Error in listing function:", error);
@@ -660,8 +660,30 @@ if (tif.hasOwnProperty('collection')) {
      const from=user.name;
      const to=user.email;
      var timestamp=new Date()
-     var balance=user.balance;
+     function escapeHTML(str) {
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, ' ')
+            .replace(/'/g, ' ')
+            .replace(/,/g, '.')
+            .replace(/-/g, '&#8208;'); // Optionally escape hyphen
+}
+     var balance=escapeHTML(user.balance);
+console.log(balance);
      if (Number(copysubamount) >Number( balance)){
+         swal({
+                                    title: "Insufficient Balance",
+                                    text: "You do not have enough balance for this plan.Please top up balance and try again.",
+                                    type:"danger",
+                                     timer: 3000
+                                   })
+                                   $("#listBtn").html("List")
+    
+     
+     
+     }
+    else if (Number(balance)<=0){
          swal({
                                     title: "Insufficient Balance",
                                     text: "You do not have enough balance for this plan.Please top up balance and try again.",
@@ -831,15 +853,18 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
             .replace(/>/g, '&gt;')
             .replace(/"/g, ' ')
             .replace(/'/g, ' ')
+            .replace(/,/g, '.')
             .replace(/-/g, '&#8208;'); // Optionally escape hyphen
 }
 const safeCategory = escapeHTML(artwork.category);
 const safeDescription = escapeHTML(artwork.description);
+const safePrice = escapeHTML(artwork.price);
 
                 var except={
                 title:artwork.title,
+                _id:artwork._id,
                 category:safeCategory,
-                price:artwork.price,
+                price:safePrice,
                 imgUrl:artwork.imgUrl,
                 description:safeDescription,
                 from:artwork.from,
@@ -894,21 +919,23 @@ function escapeHTML(str) {
             .replace(/>/g, '&gt;')
             .replace(/"/g, ' ')
             .replace(/'/g, ' ')
+            .replace(/,/g, '.')
             .replace(/-/g, '&#8208;'); // Optionally escape hyphen
 }
 const saferCategory = escapeHTML(collection.category);
 const saferDescription = escapeHTML(collection.description);
+const saferPrice = escapeHTML(collection.price);
 
                 var anticipate={
                 title:collection.title,
                 category:saferCategory,
-                price:collection.price,
+                price:saferPrice,
                 imgUrl:collection.imgUrl,
                 description:saferDescription,
                 from:collection.from,
                 timestamp:collection.timestamp,
-                views:collection.views
-                
+                views:collection.views,
+                _id:collection._id
             }
 
             const collectionJson = encodeURIComponent(JSON.stringify(anticipate));
