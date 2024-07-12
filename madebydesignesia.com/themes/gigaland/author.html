@@ -16,6 +16,7 @@
     <link id="bootstrap" href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/plugins.css" rel="stylesheet" type="text/css" />    
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js"></script>
     <!-- color scheme -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
     <link href="css/coloring.css" rel="stylesheet" type="text/css" />
@@ -514,10 +515,15 @@
 
 
 <script>
-   async  function listing(object){ 
-                     const selected = decodeURIComponent(object)
-                         localStorage.setItem("lisitingItem",selected)
-                         console.log("stored to ls");
+     function listing(object){ 
+        try {
+        const decoded = decodeURIComponent(object);
+        const parsedObject = JSON.parse(decoded); // Parsing JSON to ensure it's a valid object
+        localStorage.setItem("listingItem", JSON.stringify(parsedObject)); // Store as string
+        console.log("stored to ls", parsedObject);
+    } catch (error) {
+        console.error("Error in listing function:", error);
+    }
                       
                          }
 
@@ -790,6 +796,7 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
            userInfo.artWorks.forEach(artwork => {
            
            if (artwork.status !="unlisted"){
+            
             const artworkJson = encodeURIComponent(JSON.stringify(artwork));
                 const artworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
@@ -818,7 +825,29 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
                     </div>
                 `;
                 $('#artworksContainer').append(artworkHtml);}
-                const artworkJson = encodeURIComponent(JSON.stringify(artwork));
+                function escapeHTML(str) {
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, ' ')
+            .replace(/'/g, ' ')
+            .replace(/-/g, '&#8208;'); // Optionally escape hyphen
+}
+const safeCategory = escapeHTML(artwork.category);
+const safeDescription = escapeHTML(artwork.description);
+
+                var except={
+                title:artwork.title,
+                category:safeCategory,
+                price:artwork.price,
+                imgUrl:artwork.imgUrl,
+                description:safeDescription,
+                from:artwork.from,
+                timestamp:artwork.timestamp,
+                views:artwork.views
+                
+            }
+                const artworkJson = encodeURIComponent(JSON.stringify(except));
                 if (artwork.status=="unlisted"){
                 const unartworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
@@ -858,7 +887,32 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
 userInfo.collections.forEach(collection => {
 
 
-const collectionJson = encodeURIComponent(JSON.stringify(collection));
+
+function escapeHTML(str) {
+  return str.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, ' ')
+            .replace(/'/g, ' ')
+            .replace(/-/g, '&#8208;'); // Optionally escape hyphen
+}
+const saferCategory = escapeHTML(collection.category);
+const saferDescription = escapeHTML(collection.description);
+
+                var anticipate={
+                title:collection.title,
+                category:saferCategory,
+                price:collection.price,
+                imgUrl:collection.imgUrl,
+                description:saferDescription,
+                from:collection.from,
+                timestamp:collection.timestamp,
+                views:collection.views
+                
+            }
+
+            const collectionJson = encodeURIComponent(JSON.stringify(anticipate));
+
     if(collection.status !="unlisted" ){
            const collectionHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
