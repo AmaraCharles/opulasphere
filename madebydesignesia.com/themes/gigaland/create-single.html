@@ -656,6 +656,7 @@
         })
         .catch(error => {
           console.error('Image upload failed:', error);
+          $("#upload-button").html("Create Item")
         });
       }
       
