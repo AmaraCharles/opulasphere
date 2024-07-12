@@ -341,7 +341,11 @@
 
 
 <script>
-   
+    function take(object){
+                            const yours = decodeURIComponent(object);
+        localStorage.setItem("yours",yours)
+        location.href="art.html"
+    }
    
     async function fetchUserInfo() {
         var parsedData = localStorage.getItem('user')
@@ -370,7 +374,10 @@
         const userInfo = await fetchUserInfo();
        
      
-    userInfo.artWorks.forEach(artwork => {if (artwork.status=="Sold"){
+    userInfo.artWorks.forEach(artwork => {
+        const artworkJson = encodeURIComponent(JSON.stringify(artwork));
+        
+        if (artwork.status=="Sold"){
          const myArtworkHtml = `
          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                  <div class="nft__item" >
@@ -381,12 +388,12 @@
                          </a>
                      </div>
                      <div class="nft__item_wrap">
-                         <a href="item-details.html">
+                         <a onclick='take("${artworkJson}")'>
                              <img src=${artwork.imgUrl} class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
                          </a>
                      </div>
                      <div class="nft__item_info">
-                         <a href="item-details.html">
+                         <a onclick='take("${artworkJson}")'">
                              <h4>${artwork.title}</h4>
                          </a>
                          <div class="nft__item_click">
@@ -405,7 +412,9 @@
          $('#myArtworksContainer').append(myArtworkHtml);
     }});
 
-userInfo.collections.forEach(collection =>{if(collection.status=="Sold") {
+userInfo.collections.forEach(collection =>{
+    const collectionJson = encodeURIComponent(JSON.stringify(collection));
+    if(collection.status=="Sold") {
          const myCollectionHtml = `
          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                  <div class="nft__item" >
@@ -416,12 +425,12 @@ userInfo.collections.forEach(collection =>{if(collection.status=="Sold") {
                          </a>
                      </div>
                      <div class="nft__item_wrap">
-                         <a href="item-details.html">
+                         <a onclick='take("${collectionJson}")'>
                              <img src=${collection.imgUrl} class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
                          </a>
                      </div>
                      <div class="nft__item_info">
-                         <a href="item-details.html">
+                         <a onclick='take("${collectionJson}")'>
                              <h4>${collection.title}</h4>
                          </a>
                          <div class="nft__item_click">

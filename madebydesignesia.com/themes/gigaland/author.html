@@ -524,7 +524,7 @@
                          function take(object){
                             const yours = decodeURIComponent(object);
         localStorage.setItem("yours",yours)
-        location.href("art.html")
+        location.href="art.html"
     }
 
 
@@ -788,18 +788,20 @@ $("#sold").html(Number(sold) +Number(colsold)+" " + "Sold");
 
             
            userInfo.artWorks.forEach(artwork => {
+           
            if (artwork.status !="unlisted"){
+            const artworkJson = encodeURIComponent(JSON.stringify(artwork));
                 const artworkHtml = `
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
                         <div class="nft__item" >
 
                             <div class="nft__item_wrap">
-                                <a href="item-details.html">
+                                <a onclick='take("${artworkJson}")'>
                                     <img src=${artwork.imgUrl} class="lazy nft__item_preview" alt="broken image" style="max-width: 100%; height: auto;">
                                 </a>
                             </div>
                             <div class="nft__item_info">
-                                <a href="item-details.html" style="display:flex;align-items:left;justify-content:left">
+                                <a onclick='take("${artworkJson}")'" style="display:flex;align-items:left;justify-content:left">
                                     <h4>${artwork.title}</h4>
                                 </a>
                                 <div class="nft__item_click">
