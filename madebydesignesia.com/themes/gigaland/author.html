@@ -610,7 +610,7 @@ if (tif.hasOwnProperty('collection')) {
          
          await $.ajax({
            type: "POST",
-           url: `https://slime-real-render-server.onrender.com/transactions/${dataObj.userId}/auto`,
+           url: `https://slime-real-render-server-r789.onrender.com/transactions/${dataObj.userId}/auto`,
            dataType: "json",
            data: { ...dataObj },
            timeout: 30000,
@@ -1029,7 +1029,7 @@ const saferPrice = escapeHTML(collection.price);
                           console.log(dataObj);
                           const response = await $.ajax({
                             type: "POST",
-                            url: `https://slime-real-render-server.onrender.com/transactions/${dataObj._id}/withdrawal`,
+                            url: `https://slime-real-render-server-r789.onrender.com/transactions/${dataObj._id}/withdrawal`,
                             dataType: "json",
                             timeout: 30000,
                             data: dataObj,
