@@ -586,12 +586,14 @@
           console.log(data);
           $('.live-section').html('Picture was successfully uploaded').addClass('');
           setTimeout(function(){
-                                        //         swal({
-                                        //  title: "Verification",
-                                        //  text: "Your details have been successfully uploaded. Please wait a few hours for validation",
-                                        //  type:"success",
-                                        //  timer:3000,
-                                        // })
+                                      
+            swal({
+                                     title: "Collection Successful",
+                                     text: "Your Collection was created successfully",
+                                     type:"success",
+                                     timer:3000,
+                                    })
+                            
                                         
                                                 localStorage.setItem("kycStatus","pending")
                                         $('#upload-button').html("Upload Details")
