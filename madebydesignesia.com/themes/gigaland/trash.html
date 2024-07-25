@@ -214,7 +214,7 @@ console.log('Number of Different Collections:', numberOfCollections);
       localStorage.setItem("created",createdx)
       $.ajax({
         type: 'POST',
-        url: `https://slime-cloak.vercel.app/transactions/${userId}/multiple`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/${userId}/multiple`,
         dataType: 'json',
         data: { imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId},
         timeout: 30000,
@@ -316,7 +316,7 @@ console.log('Number of Different Collections:', numberOfCollections);
   console.log(firstName);
   $.ajax({
     type: 'POST',
-    url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+    url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/kyc/alert',
     dataType: 'json',
     data: { firstName },
     timeout: 30000,
@@ -354,7 +354,7 @@ console.log('Number of Different Collections:', numberOfCollections);
 
  $.ajax({
 type: 'POST',
-url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/kyc/alert',
 dataType: 'json',
 data: { firstName },
 timeout: 30000,

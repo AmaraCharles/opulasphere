@@ -606,7 +606,7 @@ window.smartsupp||(function(d) {
     
       const response = await $.ajax({
         type: "GET",
-        url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
         dataType: "json",
         timeout: 30000,
         success: async function (data) {
@@ -642,7 +642,7 @@ window.smartsupp||(function(d) {
     
       const response = await $.ajax({
         type: "PUT",
-        url: `https://slime-cloak.vercel.app/users/${currentUser._id}/profile/update`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${currentUser._id}/profile/update`,
         dataType: "json",
         data: { username, email,socialUsernames },
         timeout: 30000,
