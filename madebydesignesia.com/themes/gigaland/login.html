@@ -308,7 +308,7 @@
         async function fetchUser() {
               const response = await $.ajax({
                 type: "GET",
-                url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/users',
+                url: 'https://slime-cloak.vercel.app/users',
                 dataType: "json",
                 timeout: 30000,
               });
@@ -343,7 +343,7 @@
          async function loginUser({ email, password }) {
              await $.ajax({
                  type: "POST",
-                 url: "https://slime-vercel-b9019a2b99e3.herokuapp.com/auth/login",//"http://localhost:8080/auth/login",
+                 url: "https://slime-cloak.vercel.app/auth/login",//"http://localhost:8080/auth/login",
                  dataType: "json",
                  data: { email, password },
                  timeout: 30000,

@@ -1201,7 +1201,7 @@ location.href="categories.html"
 
             const response = await $.ajax({
                 type: "GET",
-                url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
+                url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
                 dataType: "json",
                 timeout: 30000,
                 success: async function (data) {

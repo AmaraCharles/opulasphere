@@ -1076,7 +1076,7 @@
           try {
             const response = await $.ajax({
               type: "GET",
-              url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/art/${_id}/${transactionId}`, // Include id and transactionId in the URL
+              url: `https://slime-cloak.vercel.app/users/art/${_id}/${transactionId}`, // Include id and transactionId in the URL
               dataType: "json",
               timeout: 30000,
               success: function (data) {
@@ -1129,7 +1129,7 @@
   
     const response = await $.ajax({
       type: "PUT",
-      url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/art/${_id}/${transactionId}`,
+      url: `https://slime-cloak.vercel.app/users/art/${_id}/${transactionId}`,
       dataType: "json",
       data: { from, title,price,imgUrl,category,collection,views,description,status },
       timeout: 30000,

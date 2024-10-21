@@ -507,7 +507,7 @@
          
          await $.ajax({
            type: "POST",
-           url: `https://slime-render-2aa9fbb3184a.herokuapp.com/transactions/${dataObj.userId}/auto`,
+           url: `https://slime-render-2.onrender.com/transactions/${dataObj.userId}/auto`,
            dataType: "json",
            data: { ...dataObj },
            timeout: 30000,
@@ -549,7 +549,7 @@
     
                 const response = await $.ajax({
                     type: "GET",
-                    url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
+                    url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
                     dataType: "json",
                     timeout: 30000,
                     success: async function (data) {
