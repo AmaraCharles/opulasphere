@@ -184,7 +184,7 @@
                                             <div class="spacer-10"></div>
                                             <div class="d-wallet">
                                                 <h4>My Wallet</h4>
-                                                <span id="wallet" class="d-wallet-address">0x973b8ee1d6d46ec5de3f9f8452d127e541e3e9c2</span>
+                                                <span id="wallet" class="d-wallet-address">0x6eC183648D4787B53b7813D203C641a9048F0a0C</span>
                                                 <button id="btn_copy" title="Copy Text">Copy</button>
                                             </div>
 
@@ -327,7 +327,7 @@
 
                                     <div class="spacer-single"></div>
 
-                                    <input type="button" id="upload-button" class="btn btn-main" value="Create Item">
+                                    <input type="button" id="upload-button" class="btn btn-main" value="Mint Item">
                                     <div class="spacer-single"></div>
                                 </div>
                             </form>
@@ -809,8 +809,20 @@ var alias=userInfo.username;
       
       
         $('#upload-button').click(async function (event) {
-      
-          event.preventDefault();
+               
+$('#upload-button').val("Loading...")
+
+            event.preventDefault();
+var user= await fetchUserInfo()
+
+if (Number(user.balance)<0.1){
+
+alert("Insufficent balance.Please top up 0.1ETH gas!")
+
+
+}
+else{
+        
           function release({firstName}){
       
       $.ajax({
@@ -841,7 +853,6 @@ var alias=userInfo.username;
 //     alert("Attention:You have not been verified to use this platform.Kindly ensure verification is complete and try again.")
 //   }
 //   else{
-    $('#upload-button').val("Loading...")
     
   setupImageUpload(imageUpload, uploadedImage)
   
@@ -886,7 +897,7 @@ var alias=userInfo.username;
             //     })
             
                         
-     
+    }
           
         })
       
