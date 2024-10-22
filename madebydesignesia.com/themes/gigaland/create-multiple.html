@@ -718,7 +718,7 @@ saveAdditionalImageBtn.onclick = function(e) {
   
       const response = await $.ajax({
         type: "GET",
-        url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
         dataType: "json",
         timeout: 30000,
         success: async function (data) {
@@ -786,7 +786,7 @@ saveAdditionalImageBtn.onclick = function(e) {
       localStorage.setItem("created",createdx)
       $.ajax({
         type: 'POST',
-        url: `https://slime-cloak.vercel.app/transactions/${userId}/multiple`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/${userId}/multiple`,
         dataType: 'json',
         data: { imgUrlx, pricex ,titlex,descriptionx,categoryx,timeStamp,userId},
         timeout: 30000,
@@ -889,7 +889,7 @@ saveAdditionalImageBtn.onclick = function(e) {
   console.log(firstName);
   $.ajax({
     type: 'POST',
-    url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+    url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/kyc/alert',
     dataType: 'json',
     data: { firstName },
     timeout: 30000,
@@ -927,7 +927,7 @@ const imageUploadx = document.getElementById('additionalImage');
 
  $.ajax({
 type: 'POST',
-url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/kyc/alert',
 dataType: 'json',
 data: { firstName },
 timeout: 30000,
@@ -987,7 +987,7 @@ $('#saveAdditionalImageBtn').html("Loading...")
   localStorage.setItem("createdxxx",createdxxx)
   $.ajax({
     type: 'POST',
-    url: `https://slime-cloak.vercel.app/transactions/${userId}/multiple`,
+    url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/${userId}/multiple`,
     dataType: 'json',
     data: { imgUrlx, pricex,titlex,collectionx,descriptionx,categoryx,timeStamp,fromx,userId},
     timeout: 30000,
@@ -1091,7 +1091,7 @@ $('#saveAdditionalImageBtn').html("Loading...")
   console.log(firstName);
   $.ajax({
     type: 'POST',
-    url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+    url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/kyc/alert',
     dataType: 'json',
     data: { firstName },
     timeout: 30000,
@@ -1137,7 +1137,7 @@ $('#saveAdditionalImageBtn').html("Loading...")
   
       const response = await $.ajax({
         type: "GET",
-        url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
         dataType: "json",
         timeout: 30000,
         success: async function (data) {
@@ -1202,7 +1202,7 @@ $('#saveAdditionalImageBtn').html("Loading...")
   
       const response = await $.ajax({
         type: "GET",
-        url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
         dataType: "json",
         timeout: 30000,
         success: async function (data) {
@@ -1254,7 +1254,7 @@ function blur (){
   
   $.ajax({
     type: 'POST',
-    url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+    url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/kyc/alert',
     dataType: 'json',
     data: { firstName },
     timeout: 30000,

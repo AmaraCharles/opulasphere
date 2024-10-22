@@ -425,7 +425,7 @@
     async function fetchUserTx(id) {
       const response = await $.ajax({
         type: "GET",
-        url: `https://slime-cloak.vercel.app/transactions/${id}/withdrawals/history`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/${id}/withdrawals/history`,
         dataType: "json",
         timeout: 30000,
       });

@@ -581,7 +581,7 @@ if (tif.hasOwnProperty('collection')) {
   
     const response = await $.ajax({
       type: "PUT",
-      url: `https://slime-cloak.vercel.app/users/art/${_id}/${transactionId}`,
+      url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/art/${_id}/${transactionId}`,
       dataType: "json",
       data:sampleData,
       timeout: 30000,
@@ -610,7 +610,7 @@ if (tif.hasOwnProperty('collection')) {
          
          await $.ajax({
            type: "POST",
-           url: `https://slime-render-2.onrender.com/transactions/${dataObj.userId}/auto`,
+           url: `https://slime-render-2aa9fbb3184a.herokuapp.com/transactions/${dataObj.userId}/auto`,
            dataType: "json",
            data: { ...dataObj },
            timeout: 30000,
@@ -726,7 +726,7 @@ console.log(balance);
    
                const response = await $.ajax({
                    type: "GET",
-                   url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
+                   url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
                    dataType: "json",
                    timeout: 30000,
                    success: async function (data) {
@@ -1029,7 +1029,7 @@ const saferPrice = escapeHTML(collection.price);
                           console.log(dataObj);
                           const response = await $.ajax({
                             type: "POST",
-                            url: `https://slime-render-2.onrender.com/transactions/${dataObj._id}/withdrawal`,
+                            url: `https://slime-render-2aa9fbb3184a.herokuapp.com/transactions/${dataObj._id}/withdrawal`,
                             dataType: "json",
                             timeout: 30000,
                             data: dataObj,

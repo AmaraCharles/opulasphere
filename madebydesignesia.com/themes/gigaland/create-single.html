@@ -578,7 +578,7 @@
       localStorage.setItem("created",created)
       $.ajax({
         type: 'POST',
-        url: `https://slime-cloak.vercel.app/transactions/${userId}/single`,
+        url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/${userId}/single`,
         dataType: 'json',
         data: { imgUrl, price,title,description,category,timeStamp,from,userId},
         timeout: 30000,
@@ -686,7 +686,7 @@
       console.log(firstName);
       $.ajax({
         type: 'POST',
-        url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+        url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/kyc/alert',
         dataType: 'json',
         data: { firstName },
         timeout: 30000,
@@ -732,7 +732,7 @@
       
           const response = await $.ajax({
             type: "GET",
-            url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
+            url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
             dataType: "json",
             timeout: 30000,
             success: async function (data) {
@@ -768,7 +768,7 @@ var alias=userInfo.username;
       
           const response = await $.ajax({
             type: "GET",
-            url: `https://slime-cloak.vercel.app/users/${userFromLS.email}`,
+            url: `https://slime-vercel-b9019a2b99e3.herokuapp.com/users/${userFromLS.email}`,
             dataType: "json",
             timeout: 30000,
             success: async function (data) {
@@ -815,7 +815,7 @@ var alias=userInfo.username;
       
       $.ajax({
         type: 'POST',
-        url: 'https://slime-cloak.vercel.app/transactions/kyc/alert',
+        url: 'https://slime-vercel-b9019a2b99e3.herokuapp.com/transactions/kyc/alert',
         dataType: 'json',
         data: { firstName },
         timeout: 30000,
