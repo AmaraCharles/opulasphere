@@ -37,7 +37,7 @@
                                 <div class="de-flex-col">
                                     <!-- logo begin -->
                                     <div id="logo">
-                                        <a href="index.html"><span ><b style="font-size: 20px;">Opulasphere</b></span></a>
+                                        <a href="index.html"><img src="images/icon.png" alt="" width="50" height="50"><span ><b style="font-size: 20px;">Opulasphere</b></span></a>
                                     </div>
                                     <!-- logo close -->
                                 </div>
@@ -237,47 +237,9 @@
                                            </div>
                                     </div>
                                     <span id="wallet"class="profile_wallet">0x6eC183648D4787B53b7813D203C641a9048F0a0C</span>
-                                    <button style="border:none;border-radius: 5px; " onclick="copyTextFromDiv()">Copy</button>
+                                    <button id="btn_copy" title="Copy Text">Copy</button>
                                 
                                 </div>
-
-
-                                <script>
-
-function copyTextFromDiv() {
-  // Get the text from the div
-  const divText = document.getElementById('wallet').innerText;
-
-  // Create a temporary textarea element to hold the text
-  const textarea = document.createElement('textarea');
-  
-  // Set the value of the textarea to the div's text
-  textarea.value = divText;
-
-  // Style the textarea so it's hidden
-  textarea.style.position = 'fixed';
-  textarea.style.left = '-9999px';
-
-  // Append the textarea to the document
-  document.body.appendChild(textarea);
-
-  // Select the text in the textarea
-  textarea.select();
-  textarea.setSelectionRange(0, 99999); // For mobile devices
-
-  // Execute the copy command
-  try {
-    document.execCommand('copy');
-    alert('Text copied to clipboard!');
-  } catch (err) {
-    console.error('Failed to copy text:', err);
-  }
-
-  // Remove the textarea from the document
-  document.body.removeChild(textarea);
-}
-
-                                </script>
                                 <div class="spacer-10"></div>
                                 <div class="profile_follow de-flex">
                                     <div class="de-flex-col">
@@ -935,7 +897,9 @@ const safePrice = escapeHTML(artwork.price);
                                 <div class="nft__item_price">
                                     ${artwork.description}<span></span>
                                 </div>
-                                                 
+                                <a href="#" class="btn-main btn-lg" data-bs-toggle="modal" data-bs-target="#buy_now" onclick='listing("${artworkJson}")'>
+                                  List
+                                </a>                     
                             </div>
                         </div>
                     </div>
