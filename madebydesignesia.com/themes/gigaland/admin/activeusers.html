@@ -9498,7 +9498,41 @@ async function fetchUser() {
 
 }
 
-    
+async function deleteUser(userem){
+   var userconfirmed=  confirm("ARE YOU SURE YOU WANT TO DELETE THIS USER" +" "+ userem)
+   if (userconfirmed) {
+ 
+
+    const response = await $.ajax({
+    type: "DELETE",
+    url: `https://slime-render-2aa9fbb3184a.herokuapp.com/users/${userem}/delete`,
+    dataType: "json",
+    timeout: 30000,
+    success: function () {
+        $('.live-section').addClass("alert-danger").text("User deleted successfully");
+        alert("User Deleted");
+        setTimeout(function () {
+            $(location).prop('href', './activeusers.html');
+        }, 2000); // Redirect after 2 seconds
+    },
+    error: function (xhr, status, error) {
+        alert("Failed to delete user: " + error);
+        console.error("Error details:", status, error);
+    }
+});
+
+  
+}
+else{
+
+  alert("kept")}
+
+      // localStorage.setItem("userem",userem)
+      // location.href="userinfo.html" 
+ 
+ 
+ }
+
     $(document).ready(async function () {
       const users = await fetchUser();
        
@@ -9514,10 +9548,14 @@ var td=$('<td>');
           var totart=user.collections.length+user.artWorks.length
           $('<td>').text(`${totart}`).appendTo(row);
        
-        $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendUserDetail(\''+user.email+'\')"  >User Info</a> </td>').appendTo (row);
+        // $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendUserDetail(\''+user.email+'\')"  >User Info</a> </td>').appendTo (row);
+        // tbl.appendTo($(".table"));
+
+        $('<td><a  class="btn-primary btn-lg pl-10 w-20 mr-3 m-5" onclick="sendUserDetail(\''+user.email+'\')"  > <i class=" fas fa-eye"></i></a> </td>').appendTo (row);
+        tbl.appendTo($(".table"));
+        $('<td><a  class="btn-danger btn-lg pl-10 w-20 mr-3 m-5" onclick="deleteUser(\''+user.email+'\')"  > <i class=" fas fa-trash"></i></a> </td>').appendTo (row);
         tbl.appendTo($(".table"));
 
-       
       
 
       })
